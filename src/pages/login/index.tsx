@@ -20,11 +20,12 @@ import {
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useColor } from "@/providers/theme-provider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button, { LinkButton } from "@/components/ui/button";
 import { ArrowRightIcon, EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { PasswordToggleButton } from "../new-password/new-password.styled";
+import { useAuthStore } from "@/stores/auth-store";
 const schema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -32,6 +33,8 @@ const schema = z.object({
 });
 
 export default function LoginPage() {
+  const {login} = useAuthStore()
+  const navigate = useNavigate()
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -43,10 +46,9 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = form.handleSubmit(async () => {
     // Simulate API call
-    setTimeout(() => {
-      // setIsLoading(false);
-      // Handle login logic here
-    }, 2000);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await login(form.getValues().email, form.getValues().password);
+    navigate("/")
   });
   const colors = {
     baseBg: useColor("surface.surface-l0"),
@@ -192,7 +194,9 @@ export default function LoginPage() {
                     )}
                   />
                   <div className="action-buttons">
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" variant="primary"
+                     onClick={handleSubmit}
+                    >
                       Log in
                     </Button>
                     <p>

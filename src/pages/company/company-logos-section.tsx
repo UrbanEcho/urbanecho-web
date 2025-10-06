@@ -29,7 +29,7 @@ const LogoList = () => {
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 100,
+            duration: 20,
             ease: "linear",
           },
         }}

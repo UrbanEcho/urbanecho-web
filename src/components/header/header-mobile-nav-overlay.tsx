@@ -71,7 +71,7 @@ export default function HeaderMobileNavOverlay({
     primaryColor: useColor("content.content-primary"),
     tertiaryColor: useColor("content.content-tertiary"),
   };
-    const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
   const { setTheme } = useTheme();
   return (
     <MobileNavOverlayContainer
@@ -86,19 +86,18 @@ export default function HeaderMobileNavOverlay({
           <XIcon />
         </Button>
       </OverlayHeader>
-      <NavAvatarWrapper
-        className="avatar-section"
-        $tertiaryColor={colors.tertiaryColor}
-      >
-        <img
-          src="https://s3.amazonaws.com/shecodesio-production/students/avatars/000/197/310/medium/pexels-kebs-visuals-3992656.jpg?1712498883"
-          alt="User Avatar"
-        />
-        <div className="user-data">
-          <h3>Grace Kagho</h3>
-          <p>grace.kagho@ivt.baug.ethz.ch</p>
-        </div>
-      </NavAvatarWrapper>
+      {isAuthenticated ? (
+        <NavAvatarWrapper
+          className="avatar-section"
+          $tertiaryColor={colors.tertiaryColor}
+        >
+          <img src={user?.avatar} alt="User Avatar" />
+          <div className="user-data">
+            <h3>{user?.name}</h3>
+            <p>{user?.email}</p>
+          </div>
+        </NavAvatarWrapper>
+      ) : null}
       <div className="menu-section">
         <h4>Menu</h4>
         {isAuthenticated && (

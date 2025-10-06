@@ -24,6 +24,7 @@ const BaseWrapper = styled.div<{
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    position: relative ;
     padding: ${({ theme }) => `${theme.spacing["16"]} ${theme.spacing["64"]}`};
     @media (max-width: ${({ theme: { layout: { container },}, }) => container.tablet.maxWidth}) {
       padding: ${({ theme }) => theme.spacing["16"]};
