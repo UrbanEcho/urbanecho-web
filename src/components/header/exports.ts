@@ -1,8 +1,8 @@
 // Main header exports
 export { default as PageHeader } from './index';
-export { default as HeaderLogo } from './header-logo';
+export { default as HeaderLogo } from '../new-header/header-logo';
 export { default as HeaderMiddleLinks } from './header-middle-links';
-export { default as HeaderThemeToggle } from './header-theme-toggle';
+export { default as HeaderThemeToggle } from '../new-header/header-theme-toggle';
 export { default as HeaderAccount } from './header-account';
 
 // Styled components exports

@@ -6,13 +6,13 @@ import {
   MiddleSection,
   RightSection,
 } from "./styled";
-import HeaderLogo from "./header-logo";
+import HeaderLogo from "../new-header/header-logo";
 import HeaderMiddleLinks from "./header-middle-links";
 import HeaderAccount from "./header-account";
 import MobileMenu, { MobileMenuToggle } from "./mobile-menu";
-import { HIDE_FOOTER_HEADER_PATHS } from "@/lib/data/header-footer-hide-data";
 import { useMemo, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import useShowNavBar from "@/lib/hooks/use-show-navbar";
 
 export default function PageHeader() {
   const borderColor = useColor("border.border-subtle");
@@ -20,9 +20,7 @@ export default function PageHeader() {
   const pathName = useLocation().pathname;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const showHeader = useMemo(() => {
-    return !HIDE_FOOTER_HEADER_PATHS.header.includes(pathName);
-  }, [pathName]);
+  const showHeader = useShowNavBar();
 
   // Close mobile menu on route change
   useEffect(() => {

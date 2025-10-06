@@ -18,7 +18,7 @@ import {
   UserMenuButton,
   DesktopOnly,
 } from "./styled";
-import HeaderThemeToggle from "./header-theme-toggle";
+import HeaderThemeToggle from "../new-header/header-theme-toggle";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   DropdownMenu,

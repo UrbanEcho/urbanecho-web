@@ -5,11 +5,10 @@ import {
   FooterContentTop,
   FooterMapBottom,
 } from "./footer.styled";
-import { Link, useLocation } from "react-router-dom";
-import HeaderLogo from "../header/header-logo";
+import { Link } from "react-router-dom";
+import HeaderLogo from "../new-header/header-logo";
 import { useColor } from "@/providers/theme-provider";
-import { useMemo } from "react";
-import { HIDE_FOOTER_HEADER_PATHS } from "@/lib/data/header-footer-hide-data";
+import useShowFooter from "@/lib/hooks/use-show-footer";
 
 type QuickLink = {
   type: "link" | "email" | "phone" | "external-link";
@@ -64,11 +63,8 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const pathName = useLocation().pathname;
 
-  const showFooter = useMemo(() => {
-    return !HIDE_FOOTER_HEADER_PATHS.footer.includes(pathName);
-  }, [pathName]);
+  const showFooter = useShowFooter();
   const bgColor = useColor("surface.surface-l0");
   const headerColor = useColor("content.content-tertiary");
   const textColor = useColor("content.content-secondary");

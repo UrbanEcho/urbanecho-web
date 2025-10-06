@@ -141,7 +141,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             {leftIcon}
           </IconWrapper>
         )}
-        <span>{children}</span>
+        <>{children}</>
         {rightIcon && !loading && (
           <IconWrapper className="icon right-icon">
             {rightIcon}

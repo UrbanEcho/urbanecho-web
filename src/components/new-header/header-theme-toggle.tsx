@@ -1,3 +1,4 @@
+import useShowHeaderThemeToggleOnMobile from "@/lib/hooks/use-show-header-theme-toggle-on-mobile";
 import { useColor, useTheme } from "@/providers/theme-provider";
 import { MoonStarsIcon, SunIcon } from "@phosphor-icons/react";
 import styled from "styled-components";
@@ -5,6 +6,7 @@ import styled from "styled-components";
 const ToggleContainer = styled.div<{
   bgColor: string;
   borderColor: string;
+  $showOnMobile: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -13,6 +15,9 @@ const ToggleContainer = styled.div<{
   border-radius: 8px;
   /* padding: 4px; */
   transition: all 0.3s ease;
+  @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    display: ${(props) => (props.$showOnMobile ? "flex" : "none")};
+  }
 `;
 
 const IconButton = styled.button<{
@@ -20,6 +25,7 @@ const IconButton = styled.button<{
   activeColor: string;
   inactiveColor: string;
   activeBgColor: string;
+  showOnMobile?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -52,7 +58,7 @@ interface ThemeToggleProps {
 
 export default function HeaderThemeToggle({ className }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
-
+  const showOnMobile = useShowHeaderThemeToggleOnMobile();
   // Theme-aware colors
   const inactiveColor = useColor("content.content-tertiary");
   const borderColor = useColor("border.border-subtle");
@@ -63,6 +69,7 @@ export default function HeaderThemeToggle({ className }: ThemeToggleProps) {
       className={className}
       bgColor={bgColor}
       borderColor={borderColor}
+      $showOnMobile={showOnMobile.theme}
     >
       <IconButton
         isActive={theme === "light"}

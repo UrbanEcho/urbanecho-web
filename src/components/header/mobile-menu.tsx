@@ -29,7 +29,7 @@ import {
   UserIdentityEmail,
   UserIdentity,
 } from "./styled";
-import HeaderLogo from "./header-logo";
+import HeaderLogo from "../new-header/header-logo";
 import Button, { LinkButton } from "../ui/button";
 
 interface MobileMenuProps {
