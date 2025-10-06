@@ -1,8 +1,7 @@
 import type { RouteObject } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import BaseLayout from "@/components/layouts/base-layout";
-import Loading from "@/components/ui/loading";
-import ErrorBoundary from "@/components/ui/error-boundary";
+import { LazyWrapper } from "./component-loader";
 
 // Lazy load page components
 const LandingPage = lazy(() => import("@/pages/landing"));
@@ -17,14 +16,6 @@ const ScheduleDemoSuccess = lazy(() => import("@/pages/schedule-demo-success"));
 const TermsOfService = lazy(() => import("@/pages/terms-of-service"));
 const PrivacyPolicy = lazy(() => import("@/pages/privacy-policy"));
 
-// Helper component to wrap lazy components with Suspense and ErrorBoundary
-const LazyWrapper = ({ children }: { children: React.ReactNode }) => (
-  <ErrorBoundary>
-    <Suspense fallback={<Loading message="Loading page..." size="large" />}>
-      {children}
-    </Suspense>
-  </ErrorBoundary>
-);
 
 const routes: RouteObject[] = [
   {
