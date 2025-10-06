@@ -1,6 +1,6 @@
 import { useColor } from "@/providers/theme-provider";
 import { useAuthStore } from "@/stores/auth-store";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 const StyledLink = styled(Link)<{
   $borderColor: string;
@@ -19,12 +19,22 @@ const StyledLink = styled(Link)<{
     }
 `;
 
+const blacklistedPages = [
+  '/login',
+  '/schedule-demo-success',
+  '/schedule-demo',
+]
+
 export default function HeaderLoginButton() {
   const colors = {
     border: useColor("border.border-brand"),
     color: useColor("content.content-brand"),
   };
   const auth = useAuthStore();
+  const pathName = useLocation().pathname;
+  if (blacklistedPages.includes(pathName)) {
+    return null;
+  }
   if (auth.isAuthenticated) {
     return null;
   }

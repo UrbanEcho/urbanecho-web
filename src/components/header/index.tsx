@@ -6,6 +6,7 @@ import { useColor } from "@/providers/theme-provider";
 import HeaderMobileNavOverlay from "./header-mobile-nav-overlay";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import useShowNavBar from "@/lib/hooks/use-show-navbar";
 
 const BaseWrapper = styled.div<{
   backgroundColor: string;
@@ -24,9 +25,13 @@ const BaseWrapper = styled.div<{
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    position: relative ;
+    position: relative;
     padding: ${({ theme }) => `${theme.spacing["16"]} ${theme.spacing["64"]}`};
-    @media (max-width: ${({ theme: { layout: { container },}, }) => container.tablet.maxWidth}) {
+    @media (max-width: ${({
+        theme: {
+          layout: { container },
+        },
+      }) => container.tablet.maxWidth}) {
       padding: ${({ theme }) => theme.spacing["16"]};
     }
   }
@@ -57,7 +62,8 @@ export default function Header() {
       window.removeEventListener("keydown", handleEscapeKey);
     };
   }, [handleEscapeKey]);
-  return (
+  const show = useShowNavBar();
+  return show ? (
     <BaseWrapper backgroundColor={colors.headerBg} borderColor={colors.border}>
       <header>
         <HeaderMobileNavOverlay
@@ -69,5 +75,5 @@ export default function Header() {
         <RightHeaderSection isOpen={isNavOpen} toggleNavOpen={setIsNavOpen} />
       </header>
     </BaseWrapper>
-  );
+  ) : null;
 }

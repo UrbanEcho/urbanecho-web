@@ -21,7 +21,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button, { LinkButton } from "@/components/ui/button";
 import { useColor } from "@/providers/theme-provider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const scheme = z.object({
   first_name: z.string().min(2, "First name must be at least 2 characters"),
@@ -29,8 +29,7 @@ const scheme = z.object({
   email: z.string().email("Invalid email address"),
   affiliation: z
     .string()
-    .min(1, "Please select the number of employees")
-    .regex(/^\d+$/, "Invalid number of employees"),
+    .min(2, "Affiliation must be at least 2 characters"),
   message: z.string().optional(),
 });
 
@@ -40,6 +39,7 @@ export default function ScheduleDemoPage() {
     "Ask in Plain Language, Get Answers",
     "Understand How Decisions Affect Real People",
   ];
+  const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(scheme),
     defaultValues: {
@@ -66,6 +66,10 @@ export default function ScheduleDemoPage() {
     requirementIconPending: useColor("border.border-tertiary"),
     footerColor: useColor("content.content-tertiary"),
   };
+  const submit = form.handleSubmit((data) => {
+    console.log(data);
+    navigate("/schedule-demo-success");
+  });
   return (
     <ScheduleDemoMainPage>
       <ScheduleDemoContainer>
@@ -87,7 +91,7 @@ export default function ScheduleDemoPage() {
           <Form {...form}>
             <ScheduleDemoForm
               action=""
-              onSubmit={form.handleSubmit((data) => console.log(data))}
+              onSubmit={submit}
               $controlBorderColor={colors.border}
               $inputColor={colors.input}
               $labelColor={colors.label}
@@ -182,7 +186,12 @@ export default function ScheduleDemoPage() {
                   </Button>
                   <p>
                     Do you have an account?
-                    <LinkButton to="/login" variant="secondary" size="small" className="login-link">
+                    <LinkButton
+                      to="/login"
+                      variant="secondary"
+                      size="small"
+                      className="login-link"
+                    >
                       {" "}
                       Login
                       <ArrowRightIcon className="arrow-left-action-icon" />

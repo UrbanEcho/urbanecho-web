@@ -27,6 +27,7 @@ import {
   RequirementItem,
   PasswordToggleButton,
 } from "./new-password.styled";
+import { useNavigate } from "react-router-dom";
 
 interface PasswordRequirementState {
   minLength: boolean;
@@ -67,6 +68,7 @@ const schema = z
 type NewPasswordFormValues = z.infer<typeof schema>;
 
 export default function NewPasswordPage() {
+  const navigate = useNavigate();
   const form = useForm<NewPasswordFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -121,6 +123,7 @@ export default function NewPasswordPage() {
       timeoutRef.current = null;
       // TODO: integrate password reset success handling
     }, 2000);
+    await navigate("/login");
   });
 
   useEffect(() => {

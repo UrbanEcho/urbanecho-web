@@ -18,11 +18,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button, { LinkButton } from "@/components/ui/button";
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { useColor } from "@/providers/theme-provider";
+import { useNavigate } from "react-router-dom";
 const forgotPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 export default function ForgotPasswordPage() {
+  const navigate = useNavigate();
   const form = useForm({ resolver: zodResolver(forgotPasswordSchema) });
+  const submit = form.handleSubmit(async (data) => {
+    console.log(data);
+    await navigate("/new-password");
+  });
   return (
     <Form {...form}>
       <ForgotPasswordPagemainContainer>
@@ -33,6 +39,7 @@ export default function ForgotPasswordPage() {
           $inputColor={useColor("content.content-primary")}
           $labelColor={useColor("content.content-tertiary-inverse")}
           $buttonDisabledBg={useColor("background.background-disabled")}
+          onSubmit={submit}
         >
           <div className="top-section">
             <HeaderLogo className="header-logo" />
@@ -60,8 +67,10 @@ export default function ForgotPasswordPage() {
               )}
             />
             <div className="action-buttons">
-              <Button disabled type="submit">Send Reset Link</Button>
-              <LinkButton  to="/login" variant="secondary">
+              <Button disabled={form.formState.isSubmitting} type="submit">
+                Send Reset Link
+              </Button>
+              <LinkButton to="/login" variant="secondary">
                 <ArrowLeftIcon className="arrow-left-action-icon" /> Back to
                 Login
               </LinkButton>
