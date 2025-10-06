@@ -6,7 +6,7 @@ import {
   FooterMapBottom,
 } from "./footer.styled";
 import { Link } from "react-router-dom";
-import HeaderLogo from "../new-header/header-logo";
+import HeaderLogo from "../header/header-logo";
 import { useColor } from "@/providers/theme-provider";
 import useShowFooter from "@/lib/hooks/use-show-footer";
 

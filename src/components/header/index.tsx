@@ -1,89 +1,72 @@
+import styled from "styled-components";
+import LeftHeaderSection from "./LeftHeaderSection";
+import MiddleHeaderSection from "./MiddleHeaderSection";
+import RightHeaderSection from "./RightHeaderSection";
 import { useColor } from "@/providers/theme-provider";
-import {
-  BaseHeader,
-  HeaderContainer,
-  LeftSection,
-  MiddleSection,
-  RightSection,
-} from "./styled";
-import HeaderLogo from "../new-header/header-logo";
-import HeaderMiddleLinks from "./header-middle-links";
-import HeaderAccount from "./header-account";
-import MobileMenu, { MobileMenuToggle } from "./mobile-menu";
-import { useMemo, useState, useEffect } from "react";
+import HeaderMobileNavOverlay from "./header-mobile-nav-overlay";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import useShowNavBar from "@/lib/hooks/use-show-navbar";
 
-export default function PageHeader() {
-  const borderColor = useColor("border.border-subtle");
-  const bgColor = useColor("surface.surface-l0");
+const BaseWrapper = styled.div<{
+  backgroundColor: string;
+  borderColor: string;
+}>`
+  background-color: ${(props) => props.backgroundColor};
+  border: 1px solid ${(props) => props.borderColor};
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  & header {
+    max-width: ${({ theme }) => theme.layout.container.desktop.maxWidth};
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: ${({ theme }) => `${theme.spacing["16"]} ${theme.spacing["64"]}`};
+    @media (max-width: ${({ theme: { layout: { container },}, }) => container.tablet.maxWidth}) {
+      padding: ${({ theme }) => theme.spacing["16"]};
+    }
+  }
+`;
+
+export default function Header() {
   const pathName = useLocation().pathname;
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const colors = {
+    headerBg: useColor("surface.surface-l0"),
+    border: useColor("border.border-subtle"),
+  };
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  const showHeader = useShowNavBar();
-
-  // Close mobile menu on route change
+  const handleEscapeKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsNavOpen(false);
+    }
+  }, []);
+  // Close nav when path changes
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setIsNavOpen(false);
   }, [pathName]);
 
-  // Prevent body scroll when mobile menu is open
+  // Close nav when escape key is pressed
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
+    window.addEventListener("keydown", handleEscapeKey);
     return () => {
-      document.body.style.overflow = 'unset';
+      window.removeEventListener("keydown", handleEscapeKey);
     };
-  }, [isMobileMenuOpen]);
-
-  const handleMobileMenuToggle = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-  const mobileHideLinks = [
-    '/schedule-demo-success',
-    '/schedule-demo',
-    '/login',
-    '/forgot-password',
-    '/new-password',
-
-  ]
-
-
-  const showHamburger = useMemo(() => {
-    if (mobileHideLinks.includes(pathName)) {
-      return false;
-    }
-    return true;
-  }, [pathName, mobileHideLinks]);
-
-  return showHeader ? (
-    <>
-      <BaseHeader bgColor={bgColor} borderColor={borderColor}>
-        <HeaderContainer>
-          <LeftSection>
-            <HeaderLogo />
-            
-          </LeftSection>
-
-          <MiddleSection>
-            <HeaderMiddleLinks />
-          </MiddleSection>
-
-          <RightSection>
-            <HeaderAccount />
-            {showHamburger && <MobileMenuToggle onClick={handleMobileMenuToggle} />}
-          </RightSection>
-        </HeaderContainer>
-      </BaseHeader>
-      
-      <MobileMenu 
-        isOpen={isMobileMenuOpen} 
-        onClose={() => setIsMobileMenuOpen(false)} 
-      />
-    </>
-  ) : null;
+  }, [handleEscapeKey]);
+  return (
+    <BaseWrapper backgroundColor={colors.headerBg} borderColor={colors.border}>
+      <header>
+        <HeaderMobileNavOverlay
+          isOpen={isNavOpen}
+          toggleNavOpen={setIsNavOpen}
+        />
+        <LeftHeaderSection />
+        <MiddleHeaderSection />
+        <RightHeaderSection isOpen={isNavOpen} toggleNavOpen={setIsNavOpen} />
+      </header>
+    </BaseWrapper>
+  );
 }

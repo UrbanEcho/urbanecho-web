@@ -1,4 +1,4 @@
-import HeaderLogo from "@/components/new-header/header-logo";
+import HeaderLogo from "@/components/header/header-logo";
 import {
   ForgotPasswordForm,
   ForgotPasswordPagemainContainer,

@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useColor } from "@/providers/theme-provider";
-import HeaderLogo from "@/components/new-header/header-logo";
+import HeaderLogo from "@/components/header/header-logo";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
