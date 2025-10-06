@@ -62,8 +62,8 @@ function ValueCard({ title, description, Icon }: ValueCardProps) {
         className="value-icon"
       />
       <div className="value-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 style={{ color: useColor("content.content-primary") }}>{title}</h3>
+        <p style={{ color: useColor("content.content-tertiary") }}>{description}</p>
       </div>
     </div>
   );

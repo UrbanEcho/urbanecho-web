@@ -19,10 +19,17 @@ export const CompanyValuesContent = styled.div<{
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing["40"]};
+  @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    padding: ${({ theme }) => `${theme.spacing["64"]} ${theme.spacing["16"]} ${theme.spacing["40"]} ${theme.spacing["16"]}`};
+    gap: ${({ theme }) => theme.spacing["24"]};
+  }
   & h2 {
     ${({ theme }) => theme.typography.heading["40/medium"]}
     text-align: center;
     color: ${({ headerColor }) => headerColor};
+    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+      ${({ theme }) => theme.typography.heading["32/medium"]}
+    }
   }
   & .values-cards-section {
     display: flex;
@@ -35,6 +42,9 @@ export const CompanyValuesContent = styled.div<{
     & .bottom-cards {
       display: flex;
       gap: ${({ theme }) => theme.spacing["24"]};
+      @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+        flex-direction: column;
+      }
     }
     & .value-card {
       flex: 1;
@@ -42,17 +52,17 @@ export const CompanyValuesContent = styled.div<{
       padding: ${({ theme }) => theme.spacing["24"]};
       display: flex;
       flex-direction: column;
-      gap: ${({ theme }) => theme.spacing["16"]};
+      gap: ${({ theme }) => theme.spacing["24"]};
         background-color: ${({ cardBgColor }) => cardBgColor};
       & .value-icon {
         width: 40px;
         height: 40px;
        
       }
-      & .content {
+      & .value-content {
         display: flex;
         flex-direction: column;
-        gap: ${({ theme }) => theme.spacing["08"]};
+        gap: ${({ theme }) => theme.spacing["24"]};
         & h3 {
           ${({ theme }) => theme.typography.heading["24/medium"]}
           color: ${({ headerColor }) => headerColor};

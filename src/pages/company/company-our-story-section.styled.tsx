@@ -37,6 +37,12 @@ export const CompanyOurStoryCopy = styled.div`
   gap: ${({ theme }) => theme.spacing["24"]};
   max-width: 62.5rem; /** 1000px */
   padding: ${({ theme }) => theme.spacing["64"]} ${({ theme }) => theme.spacing["128"]};
+  @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    padding: ${({ theme }) => theme.spacing["16"]} ${({ theme }) => theme.spacing["16"]};
+    max-width: 100%;
+    height: 38.75rem; /** 620px */
+    justify-content: flex-end
+  }
   h2 {
     ${({ theme }) => theme.typography.heading["20/bold"]}
     color: ${({ theme }) => theme.primitivesColors.neutral['50'].hex};

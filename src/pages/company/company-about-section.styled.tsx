@@ -14,12 +14,19 @@ export const CompanyAboutContent = styled.div<{
   max-width: ${({ theme: { layout } }) => layout.container.desktop.maxWidth};
   margin: 0 auto;
   padding: ${({ theme }) => `${theme.spacing["120"]} ${theme.spacing["128"]}`};
-
+ @media (max-width:${({ theme }) => theme.layout.container.desktop.maxWidth}) {
+    padding: ${({ theme }) => `${theme.spacing["64"]}  ${theme.spacing["16"]} ${theme.spacing["40"]} ${theme.spacing["16"]}`};
+  }
   & .about-section-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: ${({ theme }) => theme.spacing["80"]};
+    @media (max-width:${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: ${({ theme }) => theme.spacing["24"]};
+    }
     .image-container {
       overflow: hidden;
       border: 0.5px solid ${({ imgBorderColor }) => imgBorderColor};
