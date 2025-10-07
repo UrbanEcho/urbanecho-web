@@ -5,8 +5,10 @@ export const ScheduleDemoMainPage = styled.main``;
 export const ScheduleDemoContainer = styled.div`
   max-width: ${(props) => props.theme.layout.container.desktop.maxWidth};
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: ${(props) => props.theme.spacing["64"]};
   padding: ${({ theme }) => ` ${theme.spacing["16"]} ${theme.spacing["08"]}`};
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
@@ -19,7 +21,7 @@ export const ScheduleDemoContainer = styled.div`
 export const LeftSection = styled.div`
   height: 736px;
   background-color: #33A59F;
-  width: 576px;
+  width: 100%;
   position: relative;
   overflow: hidden;
   padding: ${(props) => props.theme.spacing["64"]};
@@ -57,8 +59,11 @@ export const LeftSection = styled.div`
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent; /* For other browsers */
-      text-shadow: 0px 0.75px 0.8px #005551cc,
-        /* teal shadow */ 0px -0.5px 0px #ffffff; /* white highlight */
+      text-shadow: 
+      /* 0px 0.75px 0.8px #005551cc, */
+        /* teal shadow */
+         0px -0.5px 0px #ffffff
+         ; /* white highlight */
     }
     ul {
       display: flex;

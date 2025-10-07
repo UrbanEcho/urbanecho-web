@@ -10,8 +10,13 @@ import {
   HomeheroSectionRightContainerImage,
   HomeheroSectionLeftTopHeaderSpecialText,
 } from "./home-hero-section.styled";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeHeroSection() {
+   const navigate = useNavigate();
+  const handleBookDemo = () => {
+    navigate("/schedule-demo");
+  };
   return (
     <HomeHeroSectionMainContainer>
       <HomeHeroSectionContentWrapper>
@@ -23,7 +28,8 @@ export default function HomeHeroSection() {
             </HomeheroSectionLeftTopHeaderSpecialText>
           </HomeheroSectionLeftTopHeader>
           <HomeheroSectionLeftCtaContainer>
-            <HomeheroSectionLeftCtaButton variant="primary">
+            <HomeheroSectionLeftCtaButton variant="primary"
+            onClick={handleBookDemo}>
               Book a Demo
             </HomeheroSectionLeftCtaButton>
             <HomeheroSectionLeftCtaButton variant="secondary">

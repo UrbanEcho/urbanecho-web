@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   HomeBenefitsSectionMainContainer,
   BenefitCardContainer,
@@ -15,6 +16,10 @@ import {
 import { useColor } from "@/providers/theme-provider";
 
 export default function HomeBenefitsSection() {
+   const navigate = useNavigate();
+  const handleBookDemo = () => {
+    navigate("/schedule-demo");
+  };
   return (
     <HomeBaseContainer bg={useColor("background.background-brand-subtle")}>
       <HomeBenefitsSectionMainContainer>
@@ -24,7 +29,9 @@ export default function HomeBenefitsSection() {
             We turn urban complexity into clarity with calibrated digital twins
             powered by our AI Co-Planner
           </HomeBenefitsSectionContainerH2>
-          <HomeBenefitsSectionContainerCallToAction variant="primary">
+          <HomeBenefitsSectionContainerCallToAction variant="primary"
+          onClick={handleBookDemo}
+          >
             Book a Demo
           </HomeBenefitsSectionContainerCallToAction>
         </HomeBenefitsSectionContainerHeading>
