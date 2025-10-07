@@ -9,9 +9,10 @@ export const HomeHeroSectionMainContainer = styled.div``;
 export const HomeHeroSectionContentWrapper = styled.div`
   max-width: 1440px;
   margin: 0 auto;
-  padding: 120px 128px;
+  padding: ${({ theme }) => `${theme.spacing["120"]} ${theme.spacing["64"]}`};
   display: flex;
   align-items: center;
+  justify-content:center;
   gap: 64px;
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     flex-direction: column-reverse;
