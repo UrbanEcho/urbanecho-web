@@ -48,6 +48,17 @@ export default function UserMenuDropDown() {
       link: "/support",
       Icon: QuestionIcon,
     },
+    {
+      label: "Product",
+      link: "/product",
+    },
+    {
+      label: "Company",
+      link: "/company",
+    },{
+      label: "Blog",
+      link: "/blog",
+    }
   ];
 
   const handleLogout = () => {
@@ -91,7 +102,7 @@ export default function UserMenuDropDown() {
               <MenuItem key={label}>
                 {({ active }) => (
                   <Link to={link} className={`menu-item-link ${active ? 'active' : ''}`}>
-                    <Icon className="menu-item-icon" />
+                    {Icon &&<Icon className="menu-item-icon" />}
                     {label}
                   </Link>
                 )}
