@@ -32,6 +32,10 @@ export const CompanyAboutContent = styled.div<{
       border: 0.5px solid ${({ imgBorderColor }) => imgBorderColor};
       height: 520px;
       width: 681px;
+      @media (max-width:${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+        width: 100%;
+        height: 280px;
+      }
       img {
         width: 100%;
         height: 100%;
