@@ -10,7 +10,7 @@ export const FooterContainer = styled.footer<{ bgColor: string  }>`
 `;
 
 export const FooterContent = styled.div`
-  padding-top: ${({ theme }) => `${theme.spacing[64]}`};
+  padding: ${({ theme }) => `${theme.spacing[64]} 0 0 ${theme.spacing['12']}`};
   max-width: ${({ theme: { layout } }) => layout.container.desktop.maxWidth};
   margin: 0 auto;
   width: 100%;
