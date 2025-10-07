@@ -40,6 +40,10 @@ export const MapCtaWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing[24]};
   padding: ${({ theme }) => `${theme.spacing["80"]} ${theme.spacing["104"]}`};
   z-index: 10;
+  @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    padding: ${({ theme }) => `${theme.spacing["16"]} ${theme.spacing["16"]}`};
+    gap: ${({ theme }) => theme.spacing["16"]};
+  }
 `;
 
 export const MapCtaHeading = styled.h2<{ color: string }>`
@@ -69,5 +73,6 @@ export const MapCtaButton = styled(Button)<{
   }
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     width: 100%;
+    ${({ theme }) => theme.typography.label["20/regular"]}
   }
 `;

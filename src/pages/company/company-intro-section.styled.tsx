@@ -35,7 +35,7 @@ export const CompanyIntroContent = styled.div`
     height: 52rem; /** 832px */
     width: 100%;
     @media (max-width: ${({ theme }) =>theme.layout.container.tablet.maxWidth}) {
-      height: 620px;
+      height: 436px;
       width: 100%;
       object-fit: cover;
       object-position: center;
