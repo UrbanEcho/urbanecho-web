@@ -44,11 +44,11 @@ export const CompanyTeamContent = styled.div<{
     width: 360px;
   }
 
-  /* filter: drop-shadow(-10.91px 11.82px 36.36px rgba(1, 57, 54, 0.17) )
+  filter: drop-shadow(-10.91px 11.82px 36.36px rgba(1, 57, 54, 0.17) )
     drop-shadow(-43.64px 49.09px 65.45px rgba(1, 57, 54, 0.15))
     drop-shadow(-99.09px 110px 89.09px rgba(1, 57, 54, 0.09))
     drop-shadow(-175.45px 196.36px 105.45px rgba(1, 57, 54, 0.03))
-    drop-shadow(-274.55px 306.36px 115.45px rgba(1, 57, 54, 0))  invert(20%); */
+    drop-shadow(-274.55px 306.36px 115.45px rgba(1, 57, 54, 0))  ;
 
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     /* background-image: linear-gradient(
@@ -86,16 +86,13 @@ export const CompanyTeamContent = styled.div<{
 `;
 
 export const BaseSvgContainer = styled.svg`
+opacity: 0.2;
   width: 800px;
   height: 800px;
   display: block;
   z-index: 1;
   position: absolute;
-  filter: drop-shadow(-10.91px 11.82px 36.36px rgba(1, 57, 54, 0.17) )
-    drop-shadow(-43.64px 49.09px 65.45px rgba(1, 57, 54, 0.15))
-    drop-shadow(-99.09px 110px 89.09px rgba(1, 57, 54, 0.09))
-    drop-shadow(-175.45px 196.36px 105.45px rgba(1, 57, 54, 0.03))
-    drop-shadow(-274.55px 306.36px 115.45px rgba(1, 57, 54, 0))  invert(20%);
+
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     width: 360px;
     height: 360px;
