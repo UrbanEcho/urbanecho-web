@@ -63,6 +63,10 @@ export const ResourcesContainer = styled.div<{
           height: 20.5rem; /** 328px */
           width: 378.67px;
           object-fit: cover;
+          @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+            width: 100%;
+            height: 328px;
+          }
         }
         & h3 {
           ${({ theme }) => theme.typography.heading["20/medium"]}
