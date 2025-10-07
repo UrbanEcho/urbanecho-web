@@ -9,12 +9,14 @@ export default function CompanyTeamSection() {
   return (
     <CompanyTeamSectionWrapper
       bgColor={useColor("surface.surface-l0")}
-    >
+      >
+      <div className="mask"></div>
+      <CompanyTeamSVG />
       <CompanyTeamContent
         headerColor={useColor("content.content-primary")}
         paragraphColor={useColor("content.content-tertiary")}
+        backgroundColor={useColor("surface.surface-l0")}
       >
-        <CompanyTeamSVG />
         <div className="team-section-content">
           <h2>The Minds Behind UrbanEcho</h2>
           <p>
