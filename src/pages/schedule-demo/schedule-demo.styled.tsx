@@ -10,7 +10,7 @@ export const ScheduleDemoContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${(props) => props.theme.spacing["64"]};
-  padding: ${({ theme }) => ` ${theme.spacing["16"]} ${theme.spacing["08"]}`};
+  padding: ${({ theme }) => `0 ${theme.spacing["08"]}`};
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     display: block;
     padding: ${({ theme }) =>
