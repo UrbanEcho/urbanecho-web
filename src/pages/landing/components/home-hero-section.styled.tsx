@@ -17,6 +17,7 @@ export const HomeHeroSectionContentWrapper = styled.div`
     flex-direction: column-reverse;
     padding: ${(props) =>
       `${props.theme.spacing["16"]} ${props.theme.spacing["16"]} ${props.theme.spacing["40"]} ${props.theme.spacing["16"]}`};
+      gap: ${({ theme }) => theme.spacing["16"]};
   }
 `;
 
