@@ -15,7 +15,20 @@ export const TermsOfServiceContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${(props) => props.theme.spacing["16"]};
-    ${(props) => props.theme.typography.heading["56/medium"]}
+    h1{
+      ${(props) => props.theme.typography.heading["56/medium"]}
+    }
+    p{
+      ${(props) => props.theme.typography.paragraph["20/400"]}
+    }
+    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+      h1{
+        ${(props) => props.theme.typography.heading["32/medium"]}
+      }
+      p{
+        ${(props) => props.theme.typography.paragraph["16/400"]}
+      }
+    }
   }
   article {
     display: flex;
