@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const ForgotPasswordPagemainContainer = styled.div`
-  min-height: 90vh;
+export const ForgotPasswordPagemainContainer = styled.main<
+{ bgColor: string }>`
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 32px;
-  background-color: ${(props) =>
-    props.theme.colors.background["background-primary"]};
+  background-color: ${(props) => props.bgColor};
   color: ${(props) => props.theme.colors.content["content-primary"]};
 `;
 export const ForgotPasswordForm = styled.form<{

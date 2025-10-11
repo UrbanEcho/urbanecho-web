@@ -24,6 +24,9 @@ const forgotPasswordSchema = z.object({
 });
 export default function ForgotPasswordPage() {
   const navigate = useNavigate();
+  const colors = {
+    mainBgColor: useColor("surface.surface-l0"),
+  };
   const form = useForm({ resolver: zodResolver(forgotPasswordSchema) });
   const submit = form.handleSubmit(async (data) => {
     console.log(data);
@@ -31,7 +34,9 @@ export default function ForgotPasswordPage() {
   });
   return (
     <Form {...form}>
-      <ForgotPasswordPagemainContainer>
+      <ForgotPasswordPagemainContainer
+        bgColor={colors.mainBgColor}
+      >
         <ForgotPasswordForm
           $controlBorderColor={useColor("border.border-subtle")}
           $headerColor={useColor("content.content-primary")}
