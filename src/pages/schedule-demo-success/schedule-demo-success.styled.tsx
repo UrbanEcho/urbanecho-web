@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const ScheduleDemoMainPage = styled.main``;
+export const ScheduleDemoMainPage = styled.main<{
+  bgColor: string;
+}>`
+  background-color: ${(props) => props.bgColor};
+`;
 
 export const ScheduleDemoContainer = styled.div`
   max-width: ${(props) => props.theme.layout.container.desktop.maxWidth};
@@ -79,6 +83,7 @@ export const ScheduleWrapper = styled.form<{
   $iconColor: string;
   $headerColor: string;
   $textColor: string;
+  $hrBorderColor?: string;
 }>`
   padding-top: ${(props) => props.theme.spacing["64"]};
   display: flex;
@@ -110,6 +115,10 @@ export const ScheduleWrapper = styled.form<{
       max-width: 480px;
       color: ${(props) => props.$textColor};
     }   
+  }
+  hr {
+    border: none;
+    border-top: 1px solid ${(props) => props.$hrBorderColor};
   }
 
   .expectation {

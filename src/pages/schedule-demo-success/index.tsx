@@ -21,13 +21,17 @@ export default function ScheduleDemoSuccess() {
     iconColor: useColor("content.content-brand"),
     headerColor: useColor("content.content-primary"),
     textColor: useColor("content.content-tertiary"),
+    hrBorderColor: useColor("border.border-subtle"),
+    mainBgColor: useColor("surface.surface-l0"),
   };
   const navigate = useNavigate();
   const navigateToHome = () => {
     navigate("/");
   };
   return (
-    <ScheduleDemoMainPage>
+    <ScheduleDemoMainPage
+      bgColor={colors.mainBgColor}
+    >
       <ScheduleDemoContainer>
         <LeftSection>
           <div className="orange-overlay"></div>
