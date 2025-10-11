@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const PrivacyPolicyMainPage = styled.main<{ bgColor: string }>`
+export const PrivacyPolicyMainPage = styled.main<{ bgColor: string, $hrBorderColor: string }>`
   background-color: ${(props) => props.bgColor};
+  hr{
+    border: none;
+    border-top: 1px solid ${(props) => props.$hrBorderColor};
+  }
 `;
 export const PrivacyPolicyContainer = styled.div`
   max-width: 1184px;

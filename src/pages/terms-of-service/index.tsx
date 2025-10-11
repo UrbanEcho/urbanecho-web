@@ -9,7 +9,10 @@ import { useColor } from "@/providers/theme-provider";
 export default function TermsOfService() {
   const lastUpdated = "09/08/2025";
   return (
-    <TermsOfServiceMainPage bgColor={useColor("surface.surface-l0")}>
+    <TermsOfServiceMainPage
+      bgColor={useColor("background.background-brand-subtle")}
+      $hrBorderColor={useColor("border.border-subtle")}
+    >
       <TermsOfServiceContainer>
         <header>
           <h1>Terms of Service</h1>

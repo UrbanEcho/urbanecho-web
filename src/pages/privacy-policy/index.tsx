@@ -8,7 +8,9 @@ import { useColor } from "@/providers/theme-provider";
 export default function PrivacyPolicy() {
   const lastUpdated = "09/08/2025";
   return (
-    <PrivacyPolicyMainPage bgColor={useColor("surface.surface-l0")}>
+    <PrivacyPolicyMainPage bgColor={useColor("background.background-brand-subtle")}
+    $hrBorderColor={useColor("border.border-subtle")}
+    >
       <PrivacyPolicyContainer>
           <header>
             <h1>Terms of Service</h1>
