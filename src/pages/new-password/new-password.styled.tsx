@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const NewPasswordPageMainContainer = styled.div`
-  min-height: 90vh;
+export const NewPasswordPageMainContainer = styled.main<{
+  bgColor: string;
+}>`
+  background-color: ${(props) => props.bgColor};
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 32px;
-  background-color: ${(props) =>
-    props.theme.colors.background["background-primary"]};
-  color: ${(props) => props.theme.colors.content["content-primary"]};
 `;
 
 export const NewPasswordForm = styled.form<{
@@ -122,7 +122,7 @@ export const PasswordRequirements = styled.div<{
   gap: ${({ theme }) => theme.spacing["08"]};
 
   .requirements-heading {
-    ${(props) => props.theme.typography.label["12/semibold"]}
+    ${(props) => props.theme.typography.paragraph["14/600"]}
     color: ${(props) => props.$mustContainColor};
   }
 
@@ -150,9 +150,10 @@ export const RequirementItem = styled.li<{
     props.$isBold
       ? props.theme.typography.paragraph["14/400"]
       : props.theme.typography.label["14/semibold"]}
-  color: ${(props) => (props.$met ? props.$metColor : props.$defaultColor)};
   font-weight: ${(props) => (props.$isBold ? "600" : "400")};
+  color: ${(props) => props.$defaultColor};
   .icon-wrapper {
+    color: ${(props) => (props.$met ? props.$metColor : props.$defaultColor)};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -161,7 +162,7 @@ export const RequirementItem = styled.li<{
     color: ${(props) =>
       props.$met ? props.$metColor : props.$iconPendingColor};
 
-    svg {
+    .requirement-icon {
       width: 16px;
       height: 16px;
     }

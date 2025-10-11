@@ -96,6 +96,9 @@ export default function NewPasswordPage() {
     requirementDefault: useColor("content.content-tertiary"),
     requirementMet: useColor("content.content-positive"),
     requirementIconPending: useColor("border.border-tertiary"),
+    mustContainColor: useColor("content.content-brand"),
+    mainBgColor: useColor("surface.surface-l0"),
+    listRequirementColor: useColor("content.content-tertiary"),
   };
 
   const checkPasswordRequirements = (
@@ -138,7 +141,9 @@ export default function NewPasswordPage() {
 
   return (
     <Form {...form}>
-      <NewPasswordPageMainContainer>
+      <NewPasswordPageMainContainer
+        bgColor={colors.mainBgColor}
+      >
         <NewPasswordForm
           $headerColor={colors.header}
           $paragraphColor={colors.paragraph}
@@ -235,7 +240,7 @@ export default function NewPasswordPage() {
               $defaultColor={colors.requirementDefault}
               $metColor={colors.requirementMet}
               $iconPendingColor={colors.requirementIconPending}
-              $mustContainColor={colors.requirementMet}
+              $mustContainColor={colors.mustContainColor}
             >
               <span className="requirements-heading">Must contain</span>
               <ul>
@@ -248,9 +253,9 @@ export default function NewPasswordPage() {
                 >
                   <span className="icon-wrapper">
                     {requirements.minLength ? (
-                      <CheckCircleIcon weight="fill" />
+                      <CheckCircleIcon weight="fill" className="requirement-icon" />
                     ) : (
-                      <CircleIcon weight="bold" />
+                      <CircleIcon weight="bold" className="requirement-icon" />
                     )}
                   </span>
                   At least 8 characters
