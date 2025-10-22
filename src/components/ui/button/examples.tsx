@@ -63,7 +63,7 @@ export function ButtonExamples() {
           <LinkButton to="/home" variant="primary" size="medium">
             Go Home
           </LinkButton>
-          <LinkButton to="/about" variant="secondary" size="medium">
+          <LinkButton to="/company" variant="secondary" size="medium">
             Learn More
           </LinkButton>
           <LinkButton 

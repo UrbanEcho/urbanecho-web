@@ -27,7 +27,7 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
     {
       type: "link",
       label: "About Us",
-      href: "/about-us",
+      href: "/company",
     },
     {
       type: "link",
