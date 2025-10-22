@@ -38,12 +38,12 @@ export const LoginFormLeftSection = styled.div<{
   & img {
     position: absolute;
     &.image-computer {
-      top: 168px;
+      bottom: 110px;
       height: 424px;
     }
     &.image-pattern {
       height: 216px;
-      bottom: 0;
+      bottom: -20px;
       width: 100%;
       object-fit: cover;
       object-position: bottom;
