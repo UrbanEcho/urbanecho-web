@@ -40,7 +40,7 @@ $isOpen:boolean
         display:inline-block;
         color:inherit;
         text-decoration:none;
-        padding:${({ theme }) => `${theme.spacing["16"]} ${theme.spacing["12"]}`}
+        padding:${({ theme }) => `${theme.spacing["16"]} 0`}
     }
   }
 `;
@@ -103,7 +103,7 @@ gap: ${({theme})=> theme.spacing["08"]};
 & .theme-actions{
     display: flex;
     flex-direction: ${({$isAuthenticated})=> $isAuthenticated ? 'row' : 'column'};
-    gap: ${({theme})=> theme.spacing["24"]};
+    gap: ${({theme,$isAuthenticated})=>$isAuthenticated?theme.spacing["24"]:   theme.spacing["08"]};
 
     & button{
         flex: 1 0;
@@ -114,6 +114,7 @@ gap: ${({theme})=> theme.spacing["08"]};
         justify-content: flex-start;
         color: inherit;
          ${({theme:{typography}})=> typography.paragraph["20/400"]}
+         padding-left:0;
     }
 }
 `

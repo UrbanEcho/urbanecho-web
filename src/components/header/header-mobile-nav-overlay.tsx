@@ -71,7 +71,7 @@ export default function HeaderMobileNavOverlay({
     primaryColor: useColor("content.content-primary"),
     tertiaryColor: useColor("content.content-tertiary"),
   };
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, user,logout } = useAuthStore();
   const { setTheme } = useTheme();
   return (
     <MobileNavOverlayContainer
@@ -119,14 +119,16 @@ export default function HeaderMobileNavOverlay({
       </div>
       <div className="login-action">
         {isAuthenticated ? (
-          <LogoutButton $color={colors.logoutColor}>Log out</LogoutButton>
+          <LogoutButton $color={colors.logoutColor}
+          onClick={logout}
+          >Log out</LogoutButton>
         ) : (
           <LoginButton to="/login" $color={colors.loginColor}>
             Login
           </LoginButton>
         )}
       </div>
-      <AppearanceWrapper className="appearance-section" $isAuthenticated>
+      <AppearanceWrapper className="appearance-section" $isAuthenticated={isAuthenticated}>
         <h4>Appearance</h4>
         <div className="theme-actions">
           <Button onClick={() => setTheme("dark")} variant="secondary">
