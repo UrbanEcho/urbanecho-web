@@ -74,9 +74,12 @@ export const FooterContentTop = styled.div<{
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: ${({ theme }) => theme.spacing[16]};
+      gap: ${({ theme }) => theme.spacing['32']};
       padding: 0;
       margin: 0;
+      @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+        gap: ${({ theme }) => theme.spacing['24']};
+      }
     }
     & ul > li {
       ${({ theme }) => theme.typography.paragraph["16/400"]}
@@ -90,7 +93,7 @@ export const FooterContentTop = styled.div<{
         text-decoration: none;
         &.highlight {
           text-decoration: underline;
-          
+
         }
         &:hover {
           text-decoration: underline;
