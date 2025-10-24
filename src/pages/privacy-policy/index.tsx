@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
     >
       <PrivacyPolicyContainer>
           <header>
-            <h1>Terms of Service</h1>
+            <h1>Privacy Policy</h1>
             <p>Last updated: {lastUpdated}</p>
           </header>
 
