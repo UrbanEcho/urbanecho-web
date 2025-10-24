@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { ThemeProvider as ScThemeProvider } from "styled-components";
 import AppTheme, {
   createColorGetter,
@@ -11,13 +11,10 @@ import AppTheme, {
 } from "../lib/theme";
 import { GlobalStyles } from "@/lib/global-styles";
 
-type Theme = ThemeMode;
-
 type ThemeContextValue = {
-  theme: Theme; // current effective theme
-  toggleTheme: () => void; // user action -> locks to explicit choice
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-  // Color utilities
+  theme: ThemeMode;
+  toggleTheme: () => void;
+  setTheme: (theme: ThemeMode) => void;
   getColor: (colorPath: AllSemanticColorPaths) => string;
   getColorCategory: (
     category:
@@ -32,32 +29,32 @@ type ThemeContextValue = {
   themeObject: typeof LightTheme | typeof DarkTheme;
 };
 
-const ThemeContext = React.createContext<ThemeContextValue | undefined>(
-  undefined
-);
+const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "theme";
+const STORAGE_KEY = "__ub_theme";
 
-// ---- Utils (SSR-safe) ----
-function getStoredTheme(): Theme | null {
+// Simplified theme initialization
+function initializeTheme(): ThemeMode {
+  // Server-side: default to light
+  if (typeof window === "undefined") return "light";
+  
   try {
-    if (typeof window === "undefined") return null;
-    const v = localStorage.getItem(STORAGE_KEY);
-    return v === "light" || v === "dark" ? v : null;
+    // Check localStorage first
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
   } catch {
-    return null;
+    // Fall through to system preference
   }
+  
+  // Fall back to system preference
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function getSystemPrefersDark(): boolean {
-  if (typeof window === "undefined" || !window.matchMedia) return false;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-function applyTheme(resolved: Theme) {
-  const root = document.documentElement;
-  root.classList.toggle("dark", resolved === "dark");
-  root.style.colorScheme = resolved; // native controls
+function applyTheme(theme: ThemeMode) {
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  document.documentElement.style.colorScheme = theme;
 }
 
 export default function ThemeProvider({
@@ -65,60 +62,30 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  // If a stored theme exists, we’ll start locked to it. Otherwise we follow system.
-  const stored = getStoredTheme();
-  const [theme, setTheme] = React.useState<Theme>(
-    stored ?? (getSystemPrefersDark() ? "dark" : "light")
-  );
-  const [followSystem, setFollowSystem] = React.useState<boolean>(!stored);
+  const [theme, setThemeState] = React.useState<ThemeMode>(initializeTheme);
 
-  // User action locks the theme (stop following system)
-  const toggleTheme = () => {
-    setFollowSystem(false);
-    setTheme((t) => (t === "light" ? "dark" : "light"));
-  };
+  const setTheme = useCallback((newTheme: ThemeMode) => {
+    setThemeState(newTheme);
+    localStorage.setItem(STORAGE_KEY, newTheme);
+  }, []);
 
-  // Persist only explicit choices (lock state)
-  useEffect(() => {
-    try {
-      if (!followSystem) localStorage.setItem(STORAGE_KEY, theme);
-    } catch {
-      // noop
-    }
-  }, [theme, followSystem]);
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === "light" ? "dark" : "light");
+  }, [theme, setTheme]);
 
-  // Reflect theme into DOM
+  // Apply theme to DOM and handle cross-tab sync
   useEffect(() => {
     applyTheme(theme);
-  }, [theme]);
-
-  // Follow system changes only while followSystem = true
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const handler = (e: MediaQueryListEvent) => {
-      if (followSystem) setTheme(e.matches ? "dark" : "light");
-    };
-    // ensure in-sync at mount
-    if (followSystem) setTheme(mql.matches ? "dark" : "light");
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, [followSystem]);
-
-  // Cross-tab sync: if another tab sets a theme, lock here too
-  useEffect(() => {
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) {
-        const v = e.newValue;
-        if (v === "light" || v === "dark") {
-          setFollowSystem(false);
-          setTheme(v);
-        }
+    
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && e.newValue && (e.newValue === "light" || e.newValue === "dark")) {
+        setThemeState(e.newValue);
       }
     };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, [theme]);
 
   const value = useMemo(() => {
     const getColor = createColorGetter(theme);
@@ -135,7 +102,7 @@ export default function ThemeProvider({
       colors,
       themeObject,
     };
-  }, [theme]);
+  }, [theme, toggleTheme, setTheme]);
 
   return (
     <ThemeContext.Provider value={value}>
@@ -154,14 +121,12 @@ export function useTheme() {
   return ctx;
 }
 
-// Convenience hook for just getting colors
 // eslint-disable-next-line react-refresh/only-export-components
 export function useColors() {
   const { getColor, colors, getColorCategory } = useTheme();
   return { getColor, colors, getColorCategory };
 }
 
-// Hook for getting a specific color
 // eslint-disable-next-line react-refresh/only-export-components
 export function useColor(colorPath: AllSemanticColorPaths) {
   const { getColor } = useTheme();

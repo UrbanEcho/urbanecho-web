@@ -1,14 +1,19 @@
 import { useColor } from "@/providers/theme-provider";
 import styled from "styled-components";
-import { lazy, Suspense } from "react";
-import Loading from "@/components/ui/loading";
+// import { lazy, Suspense } from "react";
+// import Loading from "@/components/ui/loading";
+import HomeHeroSection from "./components/home-hero-section";
+import HomePartnersLogo from "./components/home-partners-logo";
+import HomeBenefitsSection from "./components/home-benefits-section";
+import HomeHowWeWorkSection from "./components/home-how-we-work-section";
+import MapCta from "@/components/map-cta";
 
 // Lazy load landing page components
-const HomeHeroSection = lazy(() => import("./components/home-hero-section"));
-const HomePartnersLogo = lazy(() => import("./components/home-partners-logo"));
-const HomeBenefitsSection = lazy(() => import("./components/home-benefits-section"));
-const HomeHowWeWorkSection = lazy(() => import("./components/home-how-we-work-section"));
-const MapCta = lazy(() => import("@/components/map-cta"));
+// const HomeHeroSection = lazy(() => import("./components/home-hero-section"));
+// const HomePartnersLogo = lazy(() => import("./components/home-partners-logo"));
+// const HomeBenefitsSection = lazy(() => import("./components/home-benefits-section"));
+// const HomeHowWeWorkSection = lazy(() => import("./components/home-how-we-work-section"));
+// const MapCta = lazy(() => import("@/components/map-cta"));
 
 const Container = styled.div<{ bgColor: string; textColor: string }>`
   min-height: 100vh;
@@ -25,21 +30,21 @@ export default function LandingPage() {
   
   return (
     <Container bgColor={backgroundColor} textColor={textColor}>
-      <Suspense fallback={<Loading message="Loading hero section..." size="medium" />}>
+      {/* <Suspense fallback={<Loading message="Loading hero section..." size="medium" />}> */}
         <HomeHeroSection />
-      </Suspense>
-      <Suspense fallback={<Loading message="Loading partners..." size="small" />}>
+      {/* </Suspense> */}
+      {/* <Suspense fallback={<Loading message="Loading partners..." size="small" />}> */}
         <HomePartnersLogo />
-      </Suspense>
-      <Suspense fallback={<Loading message="Loading benefits..." size="medium" />}>
+      {/* </Suspense> */}
+      {/* <Suspense fallback={<Loading message="Loading benefits..." size="medium" />}> */}
         <HomeBenefitsSection />
-      </Suspense>
-      <Suspense fallback={<Loading message="Loading how we work..." size="medium" />}>
+      {/* </Suspense> */}
+      {/* <Suspense fallback={<Loading message="Loading how we work..." size="medium" />}> */}
         <HomeHowWeWorkSection/>
-      </Suspense>
-      <Suspense fallback={<Loading message="Loading map..." size="small" />}>
+      {/* </Suspense> */}
+      {/* <Suspense fallback={<Loading message="Loading map..." size="small" />}> */}
         <MapCta/>
-      </Suspense>
+      {/* </Suspense> */}
     </Container>
   );
 }
