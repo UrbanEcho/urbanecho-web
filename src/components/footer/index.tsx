@@ -39,12 +39,12 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
     {
       type: "email",
       label: "Email Us",
-      href: "mailto:info@urbanecho.com",
+      href: "#",
     },
     {
       type: "phone",
       label: "Call Us",
-      href: "tel:+1234567890",
+      href: "#",
     },
   ],
   legal: [
