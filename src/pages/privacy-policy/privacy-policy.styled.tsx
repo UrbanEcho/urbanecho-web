@@ -63,4 +63,10 @@ export const PrivacySection = styled.section`
       ${({ theme }) => theme.typography.paragraph["16/400"]}
      }
   }
+
+  span.email {
+    text-decoration: underline;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.content["content-link"].light};
+  }
 `;

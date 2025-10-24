@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   PrivacyPolicyContainer,
   PrivacyPolicyMainPage,
@@ -227,7 +228,7 @@ export default function PrivacyPolicy() {
                   </li>
                 </ul>
                 To exercise any of these rights, please contact us at
-                info@urbanecho.com.
+                <Link className="email" to={"mailto:info@urbanecho.com"}> info@urbanecho.com </Link>.
               </p>
             </PrivacySection>
 
@@ -265,7 +266,7 @@ export default function PrivacyPolicy() {
                 If you have any questions about this Privacy Policy, please
                 contact our Data Protection Officer at: <br />
                 <b>Email: </b>
-                info@urbanecho.com <br />
+               <Link className="email" to={"mailto:info@urbanecho.com"}> info@urbanecho.com </Link><br />
                 <b>Address: </b> UrbanEcho AG, Zurich, Switzerland.
               </p>
             </PrivacySection>

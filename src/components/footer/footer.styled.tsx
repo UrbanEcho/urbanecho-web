@@ -84,10 +84,14 @@ export const FooterContentTop = styled.div<{
       &:hover {
         text-decoration: underline;
       }
-
+      
       & a {
         color: ${(props) => props.textColor};
         text-decoration: none;
+        &.highlight {
+          text-decoration: underline;
+          
+        }
         &:hover {
           text-decoration: underline;
         }

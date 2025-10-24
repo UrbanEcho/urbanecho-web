@@ -212,7 +212,7 @@ export default function TermsOfService() {
             </p>
             <p>
               10.3. Contact. Questions about these Terms of Service should be
-              sent to us at info@urbanecho.com.
+              sent to us at <Link className="email" to={'mailto:info@urbanecho.com'}>info@urbanecho.com</Link>.
             </p>
           </TermsOfServiceSection>
         </article>
