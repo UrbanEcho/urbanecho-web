@@ -10,6 +10,7 @@ export default function ProductDevDocsSection() {
   const brandCardColor = useColor("content.content-brand");
   const headerCardColor = useColor("content.content-primary");
   const textCardColor = useColor("content.content-tertiary");
+
   return (
     <BaseDocsContainer backgroundColor={useColor("surface.surface-l0")}>
       <ProductDevDocsSectionContainer
@@ -32,7 +33,7 @@ export default function ProductDevDocsSection() {
                 collaborative platform.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/login" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -46,7 +47,7 @@ export default function ProductDevDocsSection() {
                 build powerful integrations.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/login" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -60,7 +61,7 @@ export default function ProductDevDocsSection() {
                 collaborative platform.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/login" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -74,7 +75,7 @@ export default function ProductDevDocsSection() {
                 build powerful integrations.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/login" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>

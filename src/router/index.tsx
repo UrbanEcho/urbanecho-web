@@ -2,6 +2,7 @@ import type { RouteObject } from "react-router-dom";
 import { lazy } from "react";
 import BaseLayout from "@/components/layouts/base-layout";
 import { LazyWrapper } from "./component-loader";
+import { SingleBlogPage } from "@/pages/single-blog";
 
 // Lazy load page components
 const LandingPage = lazy(() => import("@/pages/landing"));
@@ -15,7 +16,6 @@ const ScheduleDemo = lazy(() => import("@/pages/schedule-demo"));
 const ScheduleDemoSuccess = lazy(() => import("@/pages/schedule-demo-success"));
 const TermsOfService = lazy(() => import("@/pages/terms-of-service"));
 const PrivacyPolicy = lazy(() => import("@/pages/privacy-policy"));
-
 
 const routes: RouteObject[] = [
   {
@@ -72,6 +72,14 @@ const routes: RouteObject[] = [
         ),
       },
       {
+        path: "/blog/:blogSlug",
+        element: (
+          <LazyWrapper>
+            <SingleBlogPage />
+          </LazyWrapper>
+        ),
+      },
+      {
         path: "/login",
         element: (
           <LazyWrapper>
@@ -94,21 +102,23 @@ const routes: RouteObject[] = [
             <ScheduleDemoSuccess />
           </LazyWrapper>
         ),
-      },{
+      },
+      {
         path: "/terms-of-service",
         element: (
           <LazyWrapper>
             <TermsOfService />
           </LazyWrapper>
         ),
-      },{
+      },
+      {
         path: "/privacy-policy",
         element: (
           <LazyWrapper>
             <PrivacyPolicy />
           </LazyWrapper>
         ),
-      }
+      },
     ],
   },
 ];

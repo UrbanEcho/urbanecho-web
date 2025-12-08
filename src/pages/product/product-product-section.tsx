@@ -14,7 +14,7 @@ export default function ProductProductSection() {
       <ProductProductSectionContainer>
         <h2>A living digital twin, delivered as a service</h2>
         <div className="product-cta-container">
-          <LinkButton to="" variant="primary" size="large">
+          <LinkButton to="/login" variant="primary" size="large">
             Access Platform
           </LinkButton>
           <LinkButton to="/schedule-demo" variant="secondary" size="large">

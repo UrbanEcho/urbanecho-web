@@ -11,7 +11,7 @@ import {
   SearchInput,
 } from "./blog-section.styled";
 import { useColor } from "@/providers/theme-provider";
-import Button from "@/components/ui/button";
+// import Button from "@/components/ui/button";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { useState, useRef } from "react";
 
@@ -146,7 +146,8 @@ export default function BlogSection() {
               {blogs[key as BlogKeys].map((blog, index) => (
                 <BlogItemContainer
                   key={index}
-                  borderColor={colors.cardBorder}
+                  to={blog.tag}
+                  $borderColor={colors.cardBorder}
                   $tagBgColor={colors.tagBackground}
                   $tagTextColor={colors.tagTextColor}
                   $dateColor={colors.dateColor}
@@ -171,9 +172,9 @@ export default function BlogSection() {
           ))}
         </BlogMasonryArticles>
         <LoadMoreButtonContainer>
-          <Button variant="primary" size="large">
+          {/* <Button variant="primary" size="large">
             Load More
-          </Button>
+          </Button> */}
         </LoadMoreButtonContainer>
       </BlogSectionContent>
     </BlogSectionContainer>
@@ -211,8 +212,8 @@ function BlogHeaderWithSearch() {
   return (
     <BlogHeader>
       <h2>Our Blog</h2>
-      <SearchWrapper 
-        $isActive={isSearchActive} 
+      <SearchWrapper
+        $isActive={isSearchActive}
         $hasQuery={!!normalizedQuery}
         $borderColor={searchColors.borderColor}
       >

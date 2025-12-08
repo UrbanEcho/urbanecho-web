@@ -43,7 +43,7 @@ export default function ProductUseCaseSection() {
                 tangible value to constituents.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
               Calculate your savings
             </LinkButton>
           </CaseCardContainer>
@@ -63,7 +63,7 @@ export default function ProductUseCaseSection() {
                 AI-driven forecasts.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
               Test a scenario
             </LinkButton>
           </CaseCardContainer>
@@ -83,7 +83,7 @@ export default function ProductUseCaseSection() {
                 urban development.
               </p>
             </div>
-            <LinkButton to="" size="medium" variant="secondary">
+            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
               Ensure accountability
             </LinkButton>
           </CaseCardContainer>

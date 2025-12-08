@@ -14,7 +14,7 @@ type QuickLink = {
   type: "link" | "email" | "phone" | "external-link";
   label: string;
   href: string;
-  highlight?: 'highlight'
+  highlight?: "highlight";
 };
 type QuickLinkCategory = "quick" | "contact" | "legal";
 const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
@@ -46,10 +46,11 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
       type: "external-link",
       label: "Instagram",
       href: "#",
-    },{
+    },
+    {
       type: "external-link",
       label: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/company/urbanecholab/",
     },
   ],
   legal: [
@@ -101,7 +102,10 @@ export default function Footer() {
               <h4>Contact</h4>
               <ul>
                 {quickLinks.contact.map((link) => (
-                  <li key={link.label} className={link.highlight ? 'highlight' : ''}>
+                  <li
+                    key={link.label}
+                    className={link.highlight ? "highlight" : ""}
+                  >
                     <a href={link.href}>{link.label}</a>
                   </li>
                 ))}

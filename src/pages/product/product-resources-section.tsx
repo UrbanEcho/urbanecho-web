@@ -13,8 +13,8 @@ export default function ProductResourcesSection() {
       <ResourcesContainer
         cardBorderColor={useColor("border.border-tertiary")}
         cardContentBg={useColor("surface.surface-l0")}
-        badgeBg={useColor('background.background-selected')}
-        badgeColor={useColor('content.content-brand')}
+        badgeBg={useColor("background.background-selected")}
+        badgeColor={useColor("content.content-brand")}
       >
         <h2>Explore Our Latest Research and Insights</h2>
         <div className="resources-content-wrapper">
@@ -31,7 +31,7 @@ export default function ProductResourcesSection() {
                   How Lagos Simulated a New BRT Line Before Breaking Ground
                 </h3>
                 <p>August 30, 2025</p>
-                <LinkButton to="" variant="secondary">
+                <LinkButton to="/blog/singleblog" variant="secondary">
                   Read The Case Study
                 </LinkButton>
               </div>
@@ -48,7 +48,7 @@ export default function ProductResourcesSection() {
                   How Lagos Simulated a New BRT Line Before Breaking Ground
                 </h3>
                 <p>August 30, 2025</p>
-                <LinkButton to="" variant="secondary">
+                <LinkButton to="/blog/singleblog" variant="secondary">
                   Download The White Paper
                 </LinkButton>
               </div>
@@ -65,7 +65,7 @@ export default function ProductResourcesSection() {
                   How Lagos Simulated a New BRT Line Before Breaking Ground
                 </h3>
                 <p>August 30, 2025</p>
-                <LinkButton to="" variant="secondary">
+                <LinkButton to="/blog/singleblog" variant="secondary">
                   Visit Our Wiki
                 </LinkButton>
               </div>
@@ -77,7 +77,7 @@ export default function ProductResourcesSection() {
                 Continue your journey into foresightful urban planning with our
                 articles
               </h2>
-              <Button variant="primary">View more articles</Button>
+              <LinkButton to="/blog">View more articles</LinkButton>
             </div>
           </div>
         </div>
