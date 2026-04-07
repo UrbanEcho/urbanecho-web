@@ -44,11 +44,6 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
     },
     {
       type: "external-link",
-      label: "Instagram",
-      href: "#",
-    },
-    {
-      type: "external-link",
       label: "LinkedIn",
       href: "https://www.linkedin.com/company/urbanecholab/",
     },
