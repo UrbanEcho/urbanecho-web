@@ -3,40 +3,48 @@
  */
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer<{ bgColor: string  }>`
+export const FooterContainer = styled.footer<{ $bgColor: string }>`
   display: flex;
   flex-direction: column;
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ $bgColor }) => $bgColor};
 `;
 
 export const FooterContent = styled.div`
-  padding: ${({ theme }) => `${theme.spacing[64]} 0 0 ${theme.spacing['12']}`};
+  padding: ${({ theme }) =>
+    `${theme.spacing["64"]} ${theme.spacing["64"]} ${theme.spacing["64"]} ${theme.spacing["64"]}`};
   max-width: ${({ theme: { layout } }) => layout.container.desktop.maxWidth};
   margin: 0 auto;
   width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    padding: ${({ theme }) =>
+    `${theme.spacing[32]} ${theme.spacing["16"]} 0 ${theme.spacing["16"]}`};
+  }
 `;
+
 export const FooterContentTop = styled.div<{
-  headerColor: string;
-  textColor: string;
+  $headerColor: string;
+  $textColor: string;
 }>`
   display: flex;
   justify-content: space-between;
   padding-top: ${({ theme }) => `${theme.spacing["160"]} `};
-  color: ${(props) => props.textColor};
+  color: ${(props) => props.$textColor};
 
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     flex-direction: column;
     align-items: center;
     gap: ${({ theme }) => theme.spacing["64"]};
     padding: ${({ theme }) =>
-      `${theme.spacing["64"]} ${theme.spacing["16"]} ${theme.spacing["80"]} ${theme.spacing["16"]}`};
+    `${theme.spacing["64"]} ${theme.spacing["16"]} ${theme.spacing["80"]} ${theme.spacing["16"]}`};
   }
   & > .logo-section {
     width: 320px;
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing[24]};
-    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
       width: 100%;
     }
     & > img {
@@ -51,7 +59,8 @@ export const FooterContentTop = styled.div<{
     width: 632px;
     display: flex;
     justify-content: space-between;
-    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
       width: 100%;
       flex-wrap: wrap;
     }
@@ -60,26 +69,24 @@ export const FooterContentTop = styled.div<{
       flex-direction: column;
       gap: ${({ theme }) => theme.spacing[32]};
 
-      @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+      @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
         width: 50%;
         margin-bottom: ${({ theme }) => theme.spacing[32]};
       }
     }
     & > div > h4 {
       ${({ theme }) => theme.typography.heading["14/medium"]}
-      color: ${(props) => props.headerColor};
+      color: ${(props) => props.$headerColor};
       text-transform: uppercase;
     }
     & ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: ${({ theme }) => theme.spacing['32']};
+      gap: ${({ theme }) => theme.spacing[16]};
       padding: 0;
       margin: 0;
-      @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
-        gap: ${({ theme }) => theme.spacing['24']};
-      }
     }
     & ul > li {
       ${({ theme }) => theme.typography.paragraph["16/400"]}
@@ -87,14 +94,10 @@ export const FooterContentTop = styled.div<{
       &:hover {
         text-decoration: underline;
       }
-      
-      & a {
-        color: ${(props) => props.textColor};
-        text-decoration: none;
-        &.highlight {
-          text-decoration: underline;
 
-        }
+      & a {
+        color: ${(props) => props.$textColor};
+        text-decoration: none;
         &:hover {
           text-decoration: underline;
         }
@@ -102,8 +105,9 @@ export const FooterContentTop = styled.div<{
     }
   }
 `;
+
 export const FooterContentBottomLegal = styled.div`
-  padding: ${({ theme }) => `${theme.spacing["28"]} ${theme.spacing[10]}`};
+  padding: ${({ theme }) => `${theme.spacing["64"]} ${theme.spacing["10"]}`};
   height: 76px;
   text-align: center;
   ${({ theme }) => theme.typography.paragraph["14/400"]}

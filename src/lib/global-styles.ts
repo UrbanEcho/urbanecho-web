@@ -6,21 +6,16 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin:    0;
   }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
+
   body{
-    font-family: 'Roboto', sans-serif;
+    font-family: Montserrat, sans-serif;
   }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
   }
+
   .inset{
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
   }
 `;

@@ -1,10 +1,10 @@
+import { BroadcastIcon } from "@phosphor-icons/react";
+import { LinkButton } from "@/components/ui/button";
 import { useColor } from "@/providers/theme-provider";
 import {
   BaseDocsContainer,
   ProductDevDocsSectionContainer,
 } from "./product-dev-docs-section.styled";
-import { BroadcastIcon } from "@phosphor-icons/react";
-import { LinkButton } from "@/components/ui/button";
 
 export default function ProductDevDocsSection() {
   const brandCardColor = useColor("content.content-brand");
@@ -12,12 +12,12 @@ export default function ProductDevDocsSection() {
   const textCardColor = useColor("content.content-tertiary");
 
   return (
-    <BaseDocsContainer backgroundColor={useColor("surface.surface-l0")}>
+    <BaseDocsContainer $backgroundColor={useColor("surface.surface-l0")}>
       <ProductDevDocsSectionContainer
-        borderColor={useColor("surface.surface-l0")}
-        brandColor={brandCardColor}
-        headerColor={headerCardColor}
-        textColor={textCardColor}
+        $borderColor={useColor("surface.surface-l0")}
+        $brandColor={brandCardColor}
+        $headerColor={headerCardColor}
+        $textColor={textCardColor}
       >
         <div className="left-section-container">
           <h2>Developer Documentation and Resources</h2>
@@ -33,7 +33,7 @@ export default function ProductDevDocsSection() {
                 collaborative platform.
               </p>
             </div>
-            <LinkButton to="/login" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -47,7 +47,7 @@ export default function ProductDevDocsSection() {
                 build powerful integrations.
               </p>
             </div>
-            <LinkButton to="/login" size="medium" variant="secondary">
+            <LinkButton to="" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -61,7 +61,7 @@ export default function ProductDevDocsSection() {
                 collaborative platform.
               </p>
             </div>
-            <LinkButton to="/login" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>
@@ -75,7 +75,7 @@ export default function ProductDevDocsSection() {
                 build powerful integrations.
               </p>
             </div>
-            <LinkButton to="/login" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Start building
             </LinkButton>
           </div>

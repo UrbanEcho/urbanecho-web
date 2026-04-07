@@ -1,3 +1,9 @@
+import { Link } from "react-router-dom";
+
+import { footerImg } from "@/assets";
+import SiteLogo from "@/components/logo/site-logo";
+import useShowFooter from "@/lib/hooks/use-show-footer";
+import { useColor } from "@/providers/theme-provider";
 import {
   FooterContainer,
   FooterContent,
@@ -5,21 +11,16 @@ import {
   FooterContentTop,
   FooterMapBottom,
 } from "./footer.styled";
-import { Link } from "react-router-dom";
-import HeaderLogo from "../header/header-logo";
-import { useColor } from "@/providers/theme-provider";
-import useShowFooter from "@/lib/hooks/use-show-footer";
 
 type QuickLink = {
   type: "link" | "email" | "phone" | "external-link";
   label: string;
   href: string;
-  highlight?: "highlight";
 };
 type QuickLinkCategory = "quick" | "contact" | "legal";
+
 const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
   quick: [
-    //echo paltform,about us,blog
     {
       type: "link",
       label: "Echo Platform",
@@ -39,7 +40,7 @@ const quickLinks: Record<QuickLinkCategory, QuickLink[]> = {
   contact: [
     {
       type: "email",
-      label: "info@urbanecho.com",
+      label: "Email Us",
       href: "mailto:info@urbanecho.com",
     },
     {
@@ -69,13 +70,13 @@ export default function Footer() {
   const bgColor = useColor("surface.surface-l0");
   const headerColor = useColor("content.content-tertiary");
   const textColor = useColor("content.content-secondary");
+
   return showFooter ? (
-    <FooterContainer bgColor={bgColor}>
+    <FooterContainer $bgColor={bgColor}>
       <FooterContent>
-        <FooterContentTop headerColor={headerColor} textColor={textColor}>
+        <FooterContentTop $headerColor={headerColor} $textColor={textColor}>
           <div className="logo-section">
-            {/* <img src="/images/logo_white.svg" alt="UrbanEcho Logo" /> */}
-            <HeaderLogo />
+            <SiteLogo />
             <p>
               UrbanEcho is an ETH Zurich spin-off. We provide AI-powered urban
               digital twins to help planners build more resilient and inclusive
@@ -97,10 +98,7 @@ export default function Footer() {
               <h4>Contact</h4>
               <ul>
                 {quickLinks.contact.map((link) => (
-                  <li
-                    key={link.label}
-                    className={link.highlight ? "highlight" : ""}
-                  >
+                  <li key={link.label}>
                     <a href={link.href}>{link.label}</a>
                   </li>
                 ))}
@@ -118,11 +116,12 @@ export default function Footer() {
             </div>
           </div>
         </FooterContentTop>
+
         <FooterContentBottomLegal>
           <p>© UrbanEcho {currentYear}. All Rights Reserved</p>
         </FooterContentBottomLegal>
       </FooterContent>
-      <FooterMapBottom bgImgPath="/images/footer_img.png" />
+      <FooterMapBottom bgImgPath={footerImg} />
     </FooterContainer>
   ) : null;
 }

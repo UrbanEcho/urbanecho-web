@@ -1,8 +1,9 @@
 import styled from "styled-components";
+
 export const ProductProductSectionMainContainer = styled.div<{
-  backgroundColor: string;
+  $backgroundColor: string;
 }>`
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.$backgroundColor};
 `;
 export const ProductProductSectionContainer = styled.div`
   display: flex;
@@ -18,7 +19,8 @@ export const ProductProductSectionContainer = styled.div`
   }
   & > h2 {
     ${({ theme }) => theme.typography.heading["40/medium"]}
-    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
       ${({ theme }) => theme.typography.heading["24/medium"]}
       text-align: center;
     }
@@ -26,7 +28,8 @@ export const ProductProductSectionContainer = styled.div`
 
   & img {
     width: 880px;
-    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
       width: 100%;
     }
   }
@@ -34,7 +37,8 @@ export const ProductProductSectionContainer = styled.div`
     width: 420px;
     display: flex;
     gap: ${({ theme }) => theme.spacing["08"]};
-    @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
+    @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
       width: 100%;
       flex-direction: column;
       gap: ${({ theme }) => theme.spacing["24"]};
@@ -45,8 +49,9 @@ export const ProductProductSectionContainer = styled.div`
       border: none;
       padding: ${({ theme }) => `${theme.spacing[16]}`};
 
-      @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
-        border: 0.5px solid 
+      @media (max-width: ${({ theme }) =>
+    theme.layout.container.tablet.maxWidth}) {
+        border: 0.5px solid;
       }
     }
   }

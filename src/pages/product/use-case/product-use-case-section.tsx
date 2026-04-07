@@ -5,12 +5,13 @@ import {
   ProductUseCaseSectionContainer,
 } from "./product-use-case-section.styled";
 import { useColor } from "@/providers/theme-provider";
+
+import { LinkButton } from "@/components/ui/button";
 import {
   BuildingOfficeIcon,
   CompassToolIcon,
   GlobeHemisphereWestIcon,
 } from "@phosphor-icons/react";
-import { LinkButton } from "@/components/ui/button";
 
 export default function ProductUseCaseSection() {
   const caseCardBorderColor = useColor("border.border-tertiary");
@@ -18,21 +19,22 @@ export default function ProductUseCaseSection() {
   const headerCardColor = useColor("content.content-primary");
   const textCardColor = useColor("content.content-tertiary");
   const cardBackgroundColor = useColor("surface.surface-l0");
+
   return (
     <ProductUsecaseMainContainer
-      backgroundColor={useColor("background.background-brand-subtle")}
+      $backgroundColor={useColor("background.background-brand-subtle")}
     >
       <ProductUseCaseSectionContainer
-        headerColor={useColor("content.content-primary")}
+        $headerColor={useColor("content.content-primary")}
       >
         <h2>Empowering Planners, Governments, Institutions and Communities</h2>
         <CaseContainer>
           <CaseCardContainer
-            borderColor={caseCardBorderColor}
-            brandColor={brandCardColor}
-            headerColor={headerCardColor}
-            textColor={textCardColor}
-            backgroundColor={cardBackgroundColor}
+            $borderColor={caseCardBorderColor}
+            $brandColor={brandCardColor}
+            $headerColor={headerCardColor}
+            $textColor={textCardColor}
+            $backgroundColor={cardBackgroundColor}
           >
             <BuildingOfficeIcon className="case-card-icon" />
             <div className="case-card-text-container">
@@ -43,16 +45,16 @@ export default function ProductUseCaseSection() {
                 tangible value to constituents.
               </p>
             </div>
-            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Calculate your savings
             </LinkButton>
           </CaseCardContainer>
           <CaseCardContainer
-            borderColor={caseCardBorderColor}
-            brandColor={brandCardColor}
-            headerColor={headerCardColor}
-            textColor={textCardColor}
-            backgroundColor={cardBackgroundColor}
+            $borderColor={caseCardBorderColor}
+            $brandColor={brandCardColor}
+            $headerColor={headerCardColor}
+            $textColor={textCardColor}
+            $backgroundColor={cardBackgroundColor}
           >
             <CompassToolIcon className="case-card-icon" />
             <div className="case-card-text-container">
@@ -63,16 +65,16 @@ export default function ProductUseCaseSection() {
                 AI-driven forecasts.
               </p>
             </div>
-            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Test a scenario
             </LinkButton>
           </CaseCardContainer>
           <CaseCardContainer
-            borderColor={caseCardBorderColor}
-            brandColor={brandCardColor}
-            headerColor={headerCardColor}
-            textColor={textCardColor}
-            backgroundColor={cardBackgroundColor}
+            $borderColor={caseCardBorderColor}
+            $brandColor={brandCardColor}
+            $headerColor={headerCardColor}
+            $textColor={textCardColor}
+            $backgroundColor={cardBackgroundColor}
           >
             <GlobeHemisphereWestIcon className="case-card-icon" />
             <div className="case-card-text-container">
@@ -83,7 +85,7 @@ export default function ProductUseCaseSection() {
                 urban development.
               </p>
             </div>
-            <LinkButton to="/blog/singleblog" size="medium" variant="secondary">
+            <LinkButton to="/blog/read" size="medium" variant="secondary">
               Ensure accountability
             </LinkButton>
           </CaseCardContainer>

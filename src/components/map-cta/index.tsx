@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+
+import { worldMapImg } from "@/assets";
 import { useColor } from "@/providers/theme-provider";
 import {
   MapCtaContentWrapper,
@@ -6,7 +9,6 @@ import {
   MapCtaHeading,
   MapCtaButton,
 } from "./map-cta.styled";
-import { useNavigate } from "react-router-dom";
 
 export default function MapCta() {
   const background = useColor("background.background-brand-surface");
@@ -14,17 +16,18 @@ export default function MapCta() {
   const handleBookDemo = () => {
     navigate("/schedule-demo");
   };
+
   return (
-    <MapCtaMainContainer bg={background}>
-      <MapCtaContentWrapper  imgPath="/images/world map.png" >
+    <MapCtaMainContainer $bg={background}>
+      <MapCtaContentWrapper $imgPath={worldMapImg}>
         <MapCtaWrapper>
-          <MapCtaHeading color={useColor("content.content-primary-inverse")}>
+          <MapCtaHeading $color={useColor("content.content-primary-inverse")}>
             Your City Evolves, Your Insights Should Too
           </MapCtaHeading>
           <MapCtaButton
-            ctaBg={useColor("surface.surface-l0")}
-            textColor={useColor("content.content-brand")}
-            hoverBg={useColor("content.content-brand-hover")}
+            $ctaBg={useColor("surface.surface-l0")}
+            $textColor={useColor("content.content-brand")}
+            $hoverBg={useColor("content.content-brand-hover")}
             onClick={handleBookDemo}
           >
             Book a Demo

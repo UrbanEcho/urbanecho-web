@@ -647,7 +647,7 @@ export const TYPOGRAPHY = {
   // Font families
   fontFamily: {
     heading: "Montserrat, sans-serif",
-    body: "Roboto, sans-serif",
+    body: "Montserrat, sans-serif",
   } as const,
 
   // Headings
@@ -797,84 +797,84 @@ export const TYPOGRAPHY = {
   // Paragraphs
   paragraph: {
     "24/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "24px",
       lineHeight: "32.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "24/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "24px",
       lineHeight: "32.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     } as const,
     "20/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "20px",
       lineHeight: "28.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "20/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "20px",
       lineHeight: "28.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
-    } as const, 
+    } as const,
     "16/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "16px",
       lineHeight: "24.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "16/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "16px",
       lineHeight: "24.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     } as const,
     "14/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "14px",
       lineHeight: "20.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "14/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "14px",
       lineHeight: "20.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     } as const,
     "12/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "12px",
       lineHeight: "16.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "12/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "12px",
       lineHeight: "16.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     } as const,
     "10/400": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "10px",
       lineHeight: "14.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     } as const,
     "10/600": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "10px",
       lineHeight: "14.06px",
       fontWeight: 600,
@@ -885,63 +885,63 @@ export const TYPOGRAPHY = {
   // Labels
   label: {
     "20/regular": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "20px",
       lineHeight: "24.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     },
     "20/semibold": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "20px",
       lineHeight: "24.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     },
     "16/regular": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "16px",
       lineHeight: "20.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     },
     "16/semibold": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "16px",
       lineHeight: "20.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     },
     "14/regular": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "14px",
       lineHeight: "16.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     },
     "14/semibold": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "14px",
       lineHeight: "16.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     },
     "12/regular": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "12px",
       lineHeight: "16.06px",
       fontWeight: 400,
       letterSpacing: "-1.00%",
     },
     "12/semibold": {
-      fontFamily: "Roboto",
+      fontFamily: "Monteserrat",
       fontSize: "12px",
       lineHeight: "16.06px",
       fontWeight: 600,
       letterSpacing: "-1.00%",
     },
   },
-} 
+};
 
 export const SPACING = {
   "04": "0.25rem", // 4px
@@ -1048,32 +1048,39 @@ export const LAYOUT = {
 export type ThemeMode = "light" | "dark";
 
 // Deep key types for semantic colors
-type DeepKeys<T> = T extends Record<string, unknown>
-  ? {
-      [K in keyof T]: T[K] extends Record<string, unknown>
-        ? T[K] extends { light: string; dark: string }
-          ? K
-          : `${K & string}.${DeepKeys<T[K]> & string}`
-        : K;
-    }[keyof T]
-  : never;
+type DeepKeys<T> =
+  T extends Record<string, unknown>
+    ? {
+        [K in keyof T]: T[K] extends Record<string, unknown>
+          ? T[K] extends { light: string; dark: string }
+            ? K
+            : `${K & string}.${DeepKeys<T[K]> & string}`
+          : K;
+      }[keyof T]
+    : never;
 
 export type SemanticColorPath = DeepKeys<typeof SEMANTIC_COLOR_VARIABLES>;
 
 // Helper type to get all color keys flattened
-type FlattenColorKeys<T, Prefix extends string = ""> = T extends Record<string, unknown>
-  ? {
-      [K in keyof T]: T[K] extends { light: string; dark: string }
-        ? Prefix extends ""
-          ? K
-          : `${Prefix}.${K & string}`
-        : T[K] extends Record<string, unknown>
-        ? FlattenColorKeys<T[K], Prefix extends "" ? K & string : `${Prefix}.${K & string}`>
-        : never;
-    }[keyof T]
-  : never;
+type FlattenColorKeys<T, Prefix extends string = ""> =
+  T extends Record<string, unknown>
+    ? {
+        [K in keyof T]: T[K] extends { light: string; dark: string }
+          ? Prefix extends ""
+            ? K
+            : `${Prefix}.${K & string}`
+          : T[K] extends Record<string, unknown>
+            ? FlattenColorKeys<
+                T[K],
+                Prefix extends "" ? K & string : `${Prefix}.${K & string}`
+              >
+            : never;
+      }[keyof T]
+    : never;
 
-export type AllSemanticColorPaths = FlattenColorKeys<typeof SEMANTIC_COLOR_VARIABLES>;
+export type AllSemanticColorPaths = FlattenColorKeys<
+  typeof SEMANTIC_COLOR_VARIABLES
+>;
 
 /**
  * Get a semantic color value based on the current theme mode
@@ -1083,13 +1090,18 @@ export type AllSemanticColorPaths = FlattenColorKeys<typeof SEMANTIC_COLOR_VARIA
  */
 export function getSemanticColor(
   colorPath: AllSemanticColorPaths,
-  mode: ThemeMode
+  mode: ThemeMode,
 ): string {
   const pathParts = colorPath.split(".");
   let current: unknown = SEMANTIC_COLOR_VARIABLES;
 
   for (const part of pathParts) {
-    if (current && typeof current === "object" && current !== null && part in current) {
+    if (
+      current &&
+      typeof current === "object" &&
+      current !== null &&
+      part in current
+    ) {
       current = (current as Record<string, unknown>)[part];
     } else {
       console.warn(`Color path "${colorPath}" not found in theme`);
@@ -1097,7 +1109,12 @@ export function getSemanticColor(
     }
   }
 
-  if (current && typeof current === "object" && current !== null && mode in current) {
+  if (
+    current &&
+    typeof current === "object" &&
+    current !== null &&
+    mode in current
+  ) {
     return (current as Record<string, string>)[mode];
   }
 
@@ -1111,7 +1128,8 @@ export function getSemanticColor(
  * @returns A function that takes a color path and returns the themed color
  */
 export function createColorGetter(mode: ThemeMode) {
-  return (colorPath: AllSemanticColorPaths): string => getSemanticColor(colorPath, mode);
+  return (colorPath: AllSemanticColorPaths): string =>
+    getSemanticColor(colorPath, mode);
 }
 
 /**
@@ -1122,7 +1140,7 @@ export function createColorGetter(mode: ThemeMode) {
  */
 export function getColorCategory(
   category: keyof typeof SEMANTIC_COLOR_VARIABLES,
-  mode: ThemeMode
+  mode: ThemeMode,
 ): Record<string, string> {
   const categoryColors = SEMANTIC_COLOR_VARIABLES[category];
   const result: Record<string, string> = {};
@@ -1144,7 +1162,9 @@ export function getColorCategory(
 export function getAllSemanticColors(mode: ThemeMode): Record<string, string> {
   const result: Record<string, string> = {};
 
-  for (const [categoryKey, categoryValue] of Object.entries(SEMANTIC_COLOR_VARIABLES)) {
+  for (const [categoryKey, categoryValue] of Object.entries(
+    SEMANTIC_COLOR_VARIABLES,
+  )) {
     for (const [colorKey, colorValue] of Object.entries(categoryValue)) {
       if (typeof colorValue === "object" && mode in colorValue) {
         result[`${categoryKey}-${colorKey}`] = colorValue[mode];
@@ -1188,6 +1208,6 @@ export const AppTheme = {
   },
 };
 
-export type AppThemeType =DeepMutable< typeof AppTheme>;
+export type AppThemeType = DeepMutable<typeof AppTheme>;
 
 export default AppTheme;
