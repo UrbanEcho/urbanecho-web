@@ -6,11 +6,12 @@ import {
 } from "./terms-of-service.styled";
 import { useColor } from "@/providers/theme-provider";
 
-export default function TermsOfService() {
+export default function TermsOfServicePage() {
   const lastUpdated = "09/08/2025";
+
   return (
     <TermsOfServiceMainPage
-      bgColor={useColor("background.background-brand-subtle")}
+      $bgColor={useColor("background.background-brand-subtle")}
       $hrBorderColor={useColor("border.border-subtle")}
     >
       <TermsOfServiceContainer>
@@ -212,7 +213,11 @@ export default function TermsOfService() {
             </p>
             <p>
               10.3. Contact. Questions about these Terms of Service should be
-              sent to us at <Link className="email" to={'mailto:info@urbanecho.com'}>info@urbanecho.com</Link>.
+              sent to us at{" "}
+              <Link className="email" to={"mailto:info@urbanecho.com"}>
+                info@urbanecho.com
+              </Link>
+              .
             </p>
           </TermsOfServiceSection>
         </article>

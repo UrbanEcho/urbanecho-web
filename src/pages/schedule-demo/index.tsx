@@ -1,3 +1,12 @@
+import z from "zod";
+import { Link, useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { demoImg } from "@/assets";
+import { useColor } from "@/providers/theme-provider";
+import Button, { LinkButton } from "@/components/ui/button";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import { CheckCircleIcon } from "@phosphor-icons/react";
 import {
   LeftSection,
   RightSection,
@@ -5,8 +14,6 @@ import {
   ScheduleDemoForm,
   ScheduleDemoMainPage,
 } from "./schedule-demo.styled";
-import { ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
-import z from "zod";
 import {
   useForm,
   Form,
@@ -18,18 +25,12 @@ import {
   FormMessage,
   Textarea,
 } from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Button, { LinkButton } from "@/components/ui/button";
-import { useColor } from "@/providers/theme-provider";
-import { Link, useNavigate } from "react-router-dom";
 
 const scheme = z.object({
   first_name: z.string().min(2, "First name must be at least 2 characters"),
   last_name: z.string().min(2, "Last name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  affiliation: z
-    .string()
-    .min(2, "Affiliation must be at least 2 characters"),
+  affiliation: z.string().min(2, "Affiliation must be at least 2 characters"),
   message: z.string().optional(),
 });
 
@@ -39,6 +40,7 @@ export default function ScheduleDemoPage() {
     "Ask in Plain Language, Get Answers",
     "Understand How Decisions Affect Real People",
   ];
+
   const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(scheme),
@@ -50,10 +52,11 @@ export default function ScheduleDemoPage() {
       message: "",
     },
   });
+
   const colors = {
     baseBg: useColor("surface.surface-l0"),
     border: useColor("border.border-subtle"),
-    label: useColor("content.content-tertiary-inverse"),
+    label: useColor("content.content-primary"),
     input: useColor("content.content-primary"),
     header: useColor("content.content-primary"),
     paragraph: useColor("content.content-tertiary"),
@@ -66,22 +69,24 @@ export default function ScheduleDemoPage() {
     requirementIconPending: useColor("border.border-tertiary"),
     footerColor: useColor("content.content-tertiary"),
   };
+
   const submit = form.handleSubmit((data) => {
     console.log(data);
     navigate("/schedule-demo-success");
   });
+
   return (
     <ScheduleDemoMainPage>
       <ScheduleDemoContainer>
         <LeftSection>
           <div className="orange-overlay"></div>
-          <img src="/images/productpage_img.png" alt="" />
+          <img src={demoImg} alt="" />
           <div className="content">
             <h2>Learn how to model cities around people</h2>
             <ul>
               {options.map((option, index) => (
                 <li key={index}>
-                  <CheckCircleIcon size={20} weight="fill" /> {option}
+                  <CheckCircleIcon size={20} /> {option}
                 </li>
               ))}
             </ul>

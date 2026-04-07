@@ -85,18 +85,16 @@ export const HomeheroSectionRightContainer = styled.div`
     width: 100%;
   }
 `;
-
-export const HomeheroSectionRightContainerImage = styled.img`
-  height: 100%;
-  max-height: 400px;
-  width: auto;
+export const HomeheroSectionRightContainerImage = styled.img.attrs({
+  decoding: "async",
+})`
+  width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
 
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     width: 100%;
-    height: auto; /* Change to auto on mobile */
-    max-height: 236px; /* Add specific max-height for mobile */
     object-fit: cover;
   }
 `;

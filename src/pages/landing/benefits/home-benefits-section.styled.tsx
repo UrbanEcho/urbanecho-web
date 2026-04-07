@@ -1,10 +1,11 @@
 /**
  * @fileoverview styled components for HomeBenefitsSection
  */
+
 import Button from "@/components/ui/button";
 import styled from "styled-components";
-export const HomeBaseContainer = styled.div<{ bg: string }>`
-  background-color: ${(props) => props.bg};
+export const HomeBaseContainer = styled.div<{ $bg: string }>`
+  background-color: ${(props) => props.$bg};
 `;
 
 export const HomeBenefitsSectionMainContainer = styled.div`
@@ -101,8 +102,12 @@ export const BenefitCardDescription = styled.p`
   ${({ theme }) => theme.typography.paragraph["20/400"]}
 `;
 
-export const BenefitCardImage = styled.img`
+export const BenefitCardImage = styled.img.attrs({
+  loading: "lazy",
+  decoding: "async",
+})`
   width: 100%;
   height: auto;
   margin-top: 16px;
+  object-fit: cover;
 `;

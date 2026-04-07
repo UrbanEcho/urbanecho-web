@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const MainCompanyLogosContainer = styled.section<{
-  bgColor: string;
+  $bgColor: string;
 }>`
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ $bgColor }) => $bgColor};
 `;
 
 export const CompanyLogosContent = styled.div<{
-  headerColor: string;
+  $headerColor: string;
 }>`
   max-width: ${({ theme: { layout } }) => layout.container.desktop.maxWidth};
   margin: 0 auto;
@@ -25,7 +25,7 @@ export const CompanyLogosContent = styled.div<{
   & h2 {
     ${({ theme }) => theme.typography.heading["40/medium"]}
     text-align: center;
-    color: ${({ headerColor }) => headerColor};
+    color: ${({ $headerColor }) => $headerColor};
   }
   & .carousel-container {
     overflow: hidden;

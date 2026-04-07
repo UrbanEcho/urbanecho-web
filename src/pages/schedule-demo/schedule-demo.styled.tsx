@@ -10,7 +10,7 @@ export const ScheduleDemoContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${(props) => props.theme.spacing["64"]};
-  padding: ${({ theme }) => `0 ${theme.spacing["08"]}`};
+  padding: ${({ theme }) => `${theme.spacing["24"]}`};
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     display: block;
     padding: ${({ theme }) =>
@@ -20,7 +20,7 @@ export const ScheduleDemoContainer = styled.div`
 
 export const LeftSection = styled.div`
   height: 736px;
-  background-color: #33A59F;
+  background-color: #33a59f;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -61,9 +61,8 @@ export const LeftSection = styled.div`
       color: transparent; /* For other browsers */
       text-shadow: 
       /* 0px 0.75px 0.8px #005551cc, */
-        /* teal shadow */
-         0px -0.5px 0px #ffffff
-         ; /* white highlight */
+        /* teal shadow */ 0px -0.5px
+        0px #ffffff; /* white highlight */
     }
     ul {
       display: flex;
@@ -103,7 +102,11 @@ export const ScheduleDemoForm = styled.form<{
     flex-direction: column;
     gap: ${(props) => props.theme.spacing["16"]};
     justify-content: space-between;
-    @media (max-width: ${({ theme: { layout: { container } } }) => container.tablet.maxWidth}) {
+    @media (max-width: ${({
+        theme: {
+          layout: { container },
+        },
+      }) => container.tablet.maxWidth}) {
       gap: ${(props) => props.theme.spacing["40"]};
     }
     & [data-slot="form-item"] {
@@ -136,7 +139,9 @@ export const ScheduleDemoForm = styled.form<{
         `${props.theme.spacing["12"]} ${props.theme.spacing["14"]}`};
       border: 1px solid ${(props) => props.$controlBorderColor};
       background-color: ${(props) => props.theme.colors.surface["surface-l0"]};
-      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      transition:
+        border-color 0.2s ease-in-out,
+        box-shadow 0.2s ease-in-out;
 
       &:focus-within {
         border-color: ${(props) => props.$focusBorderColor};
@@ -173,7 +178,11 @@ export const ScheduleDemoForm = styled.form<{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: ${(props) => props.theme.spacing["16"]};
-    @media (max-width: ${({ theme: { layout: { container } } }) => container.tablet.maxWidth}) {
+    @media (max-width: ${({
+        theme: {
+          layout: { container },
+        },
+      }) => container.tablet.maxWidth}) {
       grid-template-columns: 1fr;
     }
   }
@@ -212,7 +221,11 @@ export const ScheduleDemoForm = styled.form<{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: ${({ theme: { layout: { container } } }) => container.tablet.maxWidth}) {
+    @media (max-width: ${({
+        theme: {
+          layout: { container },
+        },
+      }) => container.tablet.maxWidth}) {
       margin-top: ${(props) => props.theme.spacing["32"]};
     }
     & .copyright {

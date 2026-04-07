@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const TermsOfServiceMainPage = styled.main<{ bgColor: string ,$hrBorderColor: string }>`
-  background-color: ${(props) => props.bgColor};
+export const TermsOfServiceMainPage = styled.main<{ $bgColor: string ,$hrBorderColor: string }>`
+  background-color: ${(props) => props.$bgColor};
   hr{
     border: none;
     border-top: 1px solid ${(props) => props.$hrBorderColor};

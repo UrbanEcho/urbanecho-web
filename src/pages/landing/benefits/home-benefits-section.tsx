@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+
+import { useColor } from "@/providers/theme-provider";
+import { benefitsImg1, benefitsImg2, benefitsImg3 } from "@/assets";
 import {
   HomeBenefitsSectionMainContainer,
   BenefitCardContainer,
@@ -13,15 +16,14 @@ import {
   HomeBenefitsSectionContainerHeading,
   HomeBaseContainer,
 } from "./home-benefits-section.styled";
-import { useColor } from "@/providers/theme-provider";
 
 export default function HomeBenefitsSection() {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleBookDemo = () => {
     navigate("/schedule-demo");
   };
   return (
-    <HomeBaseContainer bg={useColor("background.background-brand-subtle")}>
+    <HomeBaseContainer $bg={useColor("background.background-brand-subtle")}>
       <HomeBenefitsSectionMainContainer>
         {/* Heading section */}
         <HomeBenefitsSectionContainerHeading>
@@ -29,8 +31,9 @@ export default function HomeBenefitsSection() {
             We turn urban complexity into clarity with calibrated digital twins
             powered by our AI Co-Planner
           </HomeBenefitsSectionContainerH2>
-          <HomeBenefitsSectionContainerCallToAction variant="primary"
-          onClick={handleBookDemo}
+          <HomeBenefitsSectionContainerCallToAction
+            variant="primary"
+            onClick={handleBookDemo}
           >
             Book a Demo
           </HomeBenefitsSectionContainerCallToAction>
@@ -40,7 +43,7 @@ export default function HomeBenefitsSection() {
           {/* ======== 001 ======= */}
           <BenefitCardContainer>
             <BenefitCardImgSection>
-              <BenefitCardImage src="/images/full-frame-shot-city.jpg" />
+              <BenefitCardImage src={benefitsImg1} />
             </BenefitCardImgSection>
             <BenefitCardTextSection>
               <BenefitCardTitle>Digitise cities anywhere</BenefitCardTitle>
@@ -53,7 +56,7 @@ export default function HomeBenefitsSection() {
           {/* ======== 002 ======= */}
           <BenefitCardContainer>
             <BenefitCardImgSection>
-              <BenefitCardImage src="/images/data-overlay-confused-business-people-office-problem-solving-system-future-technology-hologram-man-women-working-together-programming-code-online-error-digital-agency.jpg" />
+              <BenefitCardImage src={benefitsImg2} />
             </BenefitCardImgSection>
             <BenefitCardTextSection>
               <BenefitCardTitle>
@@ -66,9 +69,9 @@ export default function HomeBenefitsSection() {
             </BenefitCardTextSection>
           </BenefitCardContainer>
           {/* ======== 003 ======= */}
-          <BenefitCardContainer> 
+          <BenefitCardContainer>
             <BenefitCardImgSection>
-              <BenefitCardImage src="/images/demographic-census-concept-representation.jpg" />
+              <BenefitCardImage src={benefitsImg3} />
             </BenefitCardImgSection>
             <BenefitCardTextSection>
               <BenefitCardTitle>
@@ -79,7 +82,6 @@ export default function HomeBenefitsSection() {
                 people in your digital twin.
               </BenefitCardDescription>
             </BenefitCardTextSection>
-           
           </BenefitCardContainer>
         </BenefitCardsMainContainer>
       </HomeBenefitsSectionMainContainer>

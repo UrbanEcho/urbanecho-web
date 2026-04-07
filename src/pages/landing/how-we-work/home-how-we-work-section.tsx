@@ -1,3 +1,5 @@
+import { useColor } from "@/providers/theme-provider";
+import { accessAIImg, brainDataImg, cityDigTwinImg } from "@/assets";
 import {
   HomeWorkStepCardTextWrapper,
   HowWeWorkHeading,
@@ -13,7 +15,6 @@ import {
   HowWeWorkStepsContainer,
   HowWeWorkStepsMainContainer,
 } from "./home-how-we-work-section.styled";
-import { useColor } from "@/providers/theme-provider";
 
 export default function HomeHowWeWorkSection() {
   const stepNumberColor = useColor("content.content-brand");
@@ -50,15 +51,14 @@ export default function HomeHowWeWorkSection() {
         {/* Cards */}
         <HowWeWorkStepsCardsContainer>
           <HowWeWorkStepCard>
-             <HowWeWorkStepCardNumber
-                color={stepNumberColor}
-                bgColor={stepNumberBgColor}
-              >
-                1
-              </HowWeWorkStepCardNumber>
-            <HowWeWorkStepCardImage src="/images/brain_data.png" />
+            <HowWeWorkStepCardNumber
+              color={stepNumberColor}
+              bgColor={stepNumberBgColor}
+            >
+              1
+            </HowWeWorkStepCardNumber>
+            <HowWeWorkStepCardImage src={brainDataImg} />
             <HomeWorkStepCardTextWrapper>
-             
               <HowWeWorkStepCardTitle color={cardTitleColor}>
                 Consultation & Scoping
               </HowWeWorkStepCardTitle>
@@ -69,13 +69,13 @@ export default function HomeHowWeWorkSection() {
             </HomeWorkStepCardTextWrapper>
           </HowWeWorkStepCard>
           <HowWeWorkStepCard>
-             <HowWeWorkStepCardNumber
-                color={stepNumberColor}
-                bgColor={stepNumberBgColor}
-              >
-                2
-              </HowWeWorkStepCardNumber>
-            <HowWeWorkStepCardImage src="/images/city_digital_twin.png" />
+            <HowWeWorkStepCardNumber
+              color={stepNumberColor}
+              bgColor={stepNumberBgColor}
+            >
+              2
+            </HowWeWorkStepCardNumber>
+            <HowWeWorkStepCardImage src={cityDigTwinImg} />
             <HomeWorkStepCardTextWrapper>
               <HowWeWorkStepCardTitle color={cardTitleColor}>
                 Digital Twin Implementation
@@ -87,13 +87,13 @@ export default function HomeHowWeWorkSection() {
             </HomeWorkStepCardTextWrapper>
           </HowWeWorkStepCard>
           <HowWeWorkStepCard>
-             <HowWeWorkStepCardNumber
-                color={stepNumberColor}
-                bgColor={stepNumberBgColor}
-              >
-                3
-              </HowWeWorkStepCardNumber>
-            <HowWeWorkStepCardImage src="/images/Access_AI.png" />
+            <HowWeWorkStepCardNumber
+              color={stepNumberColor}
+              bgColor={stepNumberBgColor}
+            >
+              3
+            </HowWeWorkStepCardNumber>
+            <HowWeWorkStepCardImage src={accessAIImg} />
             <HomeWorkStepCardTextWrapper>
               <HowWeWorkStepCardTitle color={cardTitleColor}>
                 DTaaS Platform Access & Support

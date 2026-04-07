@@ -1,19 +1,15 @@
-import SecoComponent from "@/components/partners/seco-component";
+import { useColor } from "@/providers/theme-provider";
+
+import { motion } from "framer-motion";
 import {
   CompanyLogosContent,
   MainCompanyLogosContainer,
-} from "./company-logos-section.styled";
-import { useColor } from "@/providers/theme-provider";
-import EthZurichComponent from "@/components/partners/eth-zurich-component";
-import { motion } from "framer-motion";
+} from "./company-logo-section.styled";
+import { SecoIcon } from "@/components/icons/seco/seco-icon";
+import { ZurichIcon } from "@/components/icons/zurich/zurich-icon";
 
 const LogoList = () => {
-  const logos = [
-    SecoComponent,
-    EthZurichComponent,
-    SecoComponent,
-    EthZurichComponent,
-  ];
+  const logos = [SecoIcon, ZurichIcon, SecoIcon, ZurichIcon];
 
   // Duplicate the logos array to create seamless infinite loop
   const duplicatedLogos = [...logos, ...logos];
@@ -23,7 +19,7 @@ const LogoList = () => {
       <motion.div
         className="logos-container"
         animate={{
-          x: [ "0%", "-50%"],
+          x: ["0%", "-50%"],
         }}
         transition={{
           x: {
@@ -44,12 +40,14 @@ const LogoList = () => {
   );
 };
 
-export default function CompanyLogosSection({showTitle = true}: {showTitle?: boolean}) {
+export default function CompanyLogosSection({
+  showTitle = true,
+}: {
+  showTitle?: boolean;
+}) {
   return (
-    <MainCompanyLogosContainer
-      bgColor={useColor("surface.surface-l0")}
-    >
-      <CompanyLogosContent headerColor={useColor("content.content-primary")}>
+    <MainCompanyLogosContainer $bgColor={useColor("surface.surface-l0")}>
+      <CompanyLogosContent $headerColor={useColor("content.content-primary")}>
         {showTitle && <h2>Our Partners</h2>}
         <LogoList />
       </CompanyLogosContent>

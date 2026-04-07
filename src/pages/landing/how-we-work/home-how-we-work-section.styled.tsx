@@ -1,5 +1,5 @@
-import AppTheme from "@/lib/theme";
 import styled from "styled-components";
+import AppTheme from "@/lib/theme";
 
 /**
  * @fileoverview styled components for Home how we work Section
@@ -102,9 +102,12 @@ export const HowWeWorkStepCardDescription = styled.p<{ color: string }>`
   ${AppTheme.typography.paragraph["20/400"]}
   color: ${(props) => props.color};
 `;
-export const HowWeWorkStepCardImage = styled.img`
+export const HowWeWorkStepCardImage = styled.img.attrs({
+  loading: "lazy",
+  decoding: "async",
+})`
   width: 100%;
-  height: auto;
-  border-radius: 8px;
   height: 304px;
+  border-radius: 8px;
+  object-fit: cover;
 `;
