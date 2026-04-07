@@ -151,7 +151,7 @@ const cityOrderPriority: Record<string, number> = {
 const cityPages: ReadonlyArray<CityPage> = Object.entries(markdownModules)
   .filter(([path]) => !path.endsWith("intro.mdx"))
   .map(([path, raw]) => {
-    const { frontmatter, content } = parseFrontmatter(raw);
+    const { frontmatter, content } = parseFrontmatter(raw as string);
     const thumbnailValue = stripQuotes(frontmatter.thumbnail ?? "");
 
     return {

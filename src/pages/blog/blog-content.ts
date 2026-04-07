@@ -233,7 +233,7 @@ const compareByDateDesc = (a: BlogPost, b: BlogPost): number => {
 };
 
 const blogPosts = Object.entries(markdownModules)
-  .map(([path, raw]) => toBlogPost(path, raw))
+  .map(([path, raw]) => toBlogPost(path, raw as string))
   .sort(compareByDateDesc);
 
 export const getAllBlogPosts = (): ReadonlyArray<BlogPostSummary> =>
