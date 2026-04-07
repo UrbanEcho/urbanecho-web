@@ -3,7 +3,7 @@ import {
   ResourcesContainer,
 } from "./product-resources-section.styled";
 import { useColor } from "@/providers/theme-provider";
-import Button, { LinkButton } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/button";
 
 export default function ProductResourcesSection() {
   return (
