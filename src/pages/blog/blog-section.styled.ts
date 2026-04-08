@@ -42,12 +42,13 @@ export const BlogCategorySelect = styled.select<{
 }>`
   min-width: 200px;
   max-width: 100%;
-  padding: ${(props) => `${props.theme.spacing["08"]} ${props.theme.spacing["12"]}`};
+  padding: ${(props) =>
+    `${props.theme.spacing["08"]} ${props.theme.spacing["12"]}`};
   border-radius: 8px;
   border: 1px solid ${({ $border }) => $border};
   background-color: ${({ $bg }) => $bg};
   color: ${({ $fg }) => $fg};
-  font-size: 14px;
+  ${({ theme }) => theme.typography.paragraph["14/400"]};
   cursor: pointer;
 
   &:focus-visible {
@@ -73,7 +74,7 @@ export const BlogsContainer = styled.div`
   gap: ${(props) => props.theme.spacing["24"]};
 `;
 
-export const BlogItemContainer = styled(Link) <{
+export const BlogItemContainer = styled(Link)<{
   $borderColor: string;
   $tagBgColor: string;
   $tagTextColor: string;
