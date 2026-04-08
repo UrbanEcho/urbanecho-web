@@ -12,13 +12,13 @@ export const HomeHeroSectionContentWrapper = styled.div`
   padding: ${({ theme }) => `${theme.spacing["120"]} ${theme.spacing["64"]}`};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
   gap: 64px;
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
     flex-direction: column-reverse;
     padding: ${(props) =>
       `${props.theme.spacing["16"]} ${props.theme.spacing["16"]} ${props.theme.spacing["40"]} ${props.theme.spacing["16"]}`};
-    gap: ${({ theme }) => theme.spacing["16"]};
+      gap: ${({ theme }) => theme.spacing["16"]};
   }
 `;
 
@@ -85,12 +85,8 @@ export const HomeheroSectionRightContainer = styled.div`
     width: 100%;
   }
 `;
-export const HomeheroSectionRightContainerImage = styled.img.attrs({
-  decoding: "async",
-})`
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+export const HomeheroSectionRightContainerImage = styled.img`
+  height: 100%;
   object-position: center;
 
   @media (max-width: ${({ theme }) => theme.layout.container.tablet.maxWidth}) {
