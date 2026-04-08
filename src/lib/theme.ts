@@ -647,7 +647,7 @@ export const TYPOGRAPHY = {
   // Font families
   fontFamily: {
     heading: "Montserrat, sans-serif",
-    body: "Montserrat, sans-serif",
+    body: "Roboto, sans-serif",
   } as const,
 
   // Headings
